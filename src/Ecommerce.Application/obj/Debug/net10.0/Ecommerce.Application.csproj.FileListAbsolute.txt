@@ -1,0 +1,15 @@
+C:\Users\Andy\Documents\Prog\aspnet\Studies\Ecommerce\src\Ecommerce.Application\obj\Debug\net10.0\Ecommerce.Application.csproj.AssemblyReference.cache
+C:\Users\Andy\Documents\Prog\aspnet\Studies\Ecommerce\src\Ecommerce.Application\obj\Debug\net10.0\Ecommerce.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Andy\Documents\Prog\aspnet\Studies\Ecommerce\src\Ecommerce.Application\obj\Debug\net10.0\Ecommerce.Application.AssemblyInfoInputs.cache
+C:\Users\Andy\Documents\Prog\aspnet\Studies\Ecommerce\src\Ecommerce.Application\obj\Debug\net10.0\Ecommerce.Application.AssemblyInfo.cs
+C:\Users\Andy\Documents\Prog\aspnet\Studies\Ecommerce\src\Ecommerce.Application\obj\Debug\net10.0\Ecommerce.Application.csproj.CoreCompileInputs.cache
+C:\Users\Andy\Documents\Prog\aspnet\Studies\Ecommerce\src\Ecommerce.Application\bin\Debug\net10.0\Ecommerce.Application.deps.json
+C:\Users\Andy\Documents\Prog\aspnet\Studies\Ecommerce\src\Ecommerce.Application\bin\Debug\net10.0\Ecommerce.Application.dll
+C:\Users\Andy\Documents\Prog\aspnet\Studies\Ecommerce\src\Ecommerce.Application\bin\Debug\net10.0\Ecommerce.Application.pdb
+C:\Users\Andy\Documents\Prog\aspnet\Studies\Ecommerce\src\Ecommerce.Application\bin\Debug\net10.0\Ecommerce.Domain.dll
+C:\Users\Andy\Documents\Prog\aspnet\Studies\Ecommerce\src\Ecommerce.Application\bin\Debug\net10.0\Ecommerce.Domain.pdb
+C:\Users\Andy\Documents\Prog\aspnet\Studies\Ecommerce\src\Ecommerce.Application\obj\Debug\net10.0\Ecommerc.C5F54E74.Up2Date
+C:\Users\Andy\Documents\Prog\aspnet\Studies\Ecommerce\src\Ecommerce.Application\obj\Debug\net10.0\Ecommerce.Application.dll
+C:\Users\Andy\Documents\Prog\aspnet\Studies\Ecommerce\src\Ecommerce.Application\obj\Debug\net10.0\refint\Ecommerce.Application.dll
+C:\Users\Andy\Documents\Prog\aspnet\Studies\Ecommerce\src\Ecommerce.Application\obj\Debug\net10.0\Ecommerce.Application.pdb
+C:\Users\Andy\Documents\Prog\aspnet\Studies\Ecommerce\src\Ecommerce.Application\obj\Debug\net10.0\ref\Ecommerce.Application.dll
