@@ -41,9 +41,9 @@ Certifique-se de ter o Docker Desktop instalado e execute os comandos abaixo par
 # ⚙️ Configuração do Ambiente
 
 1. Clone o repositório na sua máquina
-```git clone [https://github.com/AtonementAndy/Ecommerce-CQRS.git](https://github.com/AtonementAndy/Ecommerce-CQRS.git)
+git clone [https://github.com/AtonementAndy/Ecommerce-CQRS.git](https://github.com/AtonementAndy/Ecommerce-CQRS.git)
 cd Ecommerce-CQRS
-```
+
 
 Configure as strings de conexão e chaves JWT no arquivo appsettings.json, localizado no projeto Ecommerce.API:
 
