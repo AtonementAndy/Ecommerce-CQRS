@@ -23,25 +23,35 @@ The project depends on external services for messaging, caching, and databases. 
 Make sure you have Docker Desktop installed and run the commands below to pull the official images and start the services:
 
 ## SQL Server (Write Database)
-```docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Your_Password123" -p 1433:1433 --name sqlserver -d [mcr.microsoft.com/mssql/server:2022-latest](https://mcr.microsoft.com/mssql/server:2022-latest)```
+```
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Your_Password123" -p 1433:1433 --name sqlserver -d [mcr.microsoft.com/mssql/server:2022-latest](https://mcr.microsoft.com/mssql/server:2022-latest)
+```
 
 ## MongoDB (Read Model Database)
-```docker run -p 27017:27017 --name mongodb -d mongo:latest```
+```
+docker run -p 27017:27017 --name mongodb -d mongo:latest
+```
 
 ## Redis (Distributed Cache)
-```docker run -p 6379:6379 --name redis -d redis:latest```
+```
+docker run -p 6379:6379 --name redis -d redis:latest
+```
 
 ## RabbitMQ (Message Broker com Management UI)
-```docker run -p 5672:5672 -p 15672:15672 --name rabbitmq -d rabbitmq:3-management```
+```
+docker run -p 5672:5672 -p 15672:15672 --name rabbitmq -d rabbitmq:3-management
+```
 
 
 # ⚙️ Environment Configuration
 
-1. Clone the repository to your machine:
-    git clone [https://github.com/AtonementAndy/Ecommerce-CQRS.git](https://github.com/AtonementAndy/Ecommerce-CQRS.git)
+Clone the repository to your machine:
+git clone [https://github.com/AtonementAndy/Ecommerce-CQRS.git](https://github.com/AtonementAndy/Ecommerce-CQRS.git)
 
-   Then, inside the project folder:
-    ```cd Ecommerce-CQRS```
+Then, inside the project folder:
+```
+cd Ecommerce-CQRS
+```
 
 
 Configure the connection strings and JWT keys in the appsettings.json file, located in the Ecommerce.API project:
