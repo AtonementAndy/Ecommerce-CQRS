@@ -5,14 +5,14 @@ A modern, robust, and highly scalable high-performance e-commerce backend, built
 
 ## 🛠️ Tech Stack & Tools
 
-Language and Framework: C# 13, .NET 9, ASP.NET Core Web API
-Architecture: Clean Architecture, CQRS (MediatR), Domain-Driven Design (DDD)
-Write Model (Relational Database): SQL Server via Entity Framework Core 9 (Code-First and Migrations)
-Read Model (Non-Relational Database): MongoDB (Syncing with MessageBroker)
-MessageBroker and Event-Driven: MassTransit com RabbitMQ
-Cache & Invalidation: Redis (StackExchangeRedis) with Cache-Aside Pattern
-Validation and Documentation: FluentValidation, Scalar / OpenAPI (.NET 9 nativo)
-Security: ASP.NET Core Identity / JWT Bearer com Policy-Based Authorization (CatalogManagement, AdminOnly)
+- Language and Framework: C# 13, .NET 9, ASP.NET Core Web API
+- Architecture: Clean Architecture, CQRS (MediatR), Domain-Driven Design (DDD)
+- Write Model (Relational Database): SQL Server via Entity Framework Core 9 (Code-First and Migrations)
+- Read Model (Non-Relational Database): MongoDB (Syncing with MessageBroker)
+- MessageBroker and Event-Driven: MassTransit com RabbitMQ
+- Cache & Invalidation: Redis (StackExchangeRedis) with Cache-Aside Pattern
+- Validation and Documentation: FluentValidation, Scalar / OpenAPI (.NET 9 nativo)
+- Security: ASP.NET Core Identity / JWT Bearer com Policy-Based Authorization (CatalogManagement, AdminOnly)
 
 
 # 🐳 Infrastructure (Docker)
