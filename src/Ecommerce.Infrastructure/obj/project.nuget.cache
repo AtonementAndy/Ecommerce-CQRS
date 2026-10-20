@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+2An3j5OK1Q=",
+  "dgSpecHash": "qU2d+VeXdhE=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Andy\\Documents\\Prog\\aspnet\\Studies\\Ecommerce\\src\\Ecommerce.Infrastructure\\Ecommerce.Infrastructure.csproj",
+  "projectFilePath": "C:\\Users\\Andy\\Documents\\Prog\\aspnet\\Studies\\Ecommerce-CQRS\\src\\Ecommerce.Infrastructure\\Ecommerce.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Andy\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\Andy\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

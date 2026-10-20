@@ -4,42 +4,42 @@ using Ecommerce.Infrastructure.Data;
 
 namespace Ecommerce.Infrastructure.Repository
 {
-    internal class ProductWriteRepository(EcommerceDbContext _context) : IProductWriteRepository
+    public class ProductWriteRepository(EcommerceDbContext context) : IProductWriteRepository
     {
-
-        public async Task<Product?> GetByIdAsync(Guid id, CancellationToken cancellationToken)
+        public async Task<Product> AddAsync(Product product, CancellationToken cancellationToken)
         {
-            var product = await _context.Products.FindAsync([id], cancellationToken);
-            if (product is null) return null;
+            await context.Products.AddAsync(product, cancellationToken);
 
             return product;
         }
-        public async Task<bool> UpdateASync(Guid id, Product product, CancellationToken cancellationToken)
-        {
-            var productFound = await _context.Products.FindAsync([id], cancellationToken);
-            if (productFound is null) return false;
 
-            productFound.UpdateDetails(
-                product.Name,
-                product.Description,
-                product.Price,
-                product.Stock
+        public async Task<Product?> UpdateAsync(Guid id, string name, string description, decimal price, int stock, CancellationToken cancellationToken)
+        {
+            var product = await context.Products.FindAsync([id], cancellationToken);
+            if (product is null) return null;
+
+            //context.Entry(product).Property(p => p.Version).OriginalValue = expectedVersion;
+
+            product.UpdateDetails(
+                name,
+                description,
+                price,
+                stock
             );
 
-            _context.Products.Update(productFound);
-            await _context.SaveChangesAsync(cancellationToken);
-            return true;
+            return product;
         }
 
-        public async Task<bool> DeleteAsync(Guid id, CancellationToken cancellationToken)
+        public async Task<bool> DeleteAsync(Guid id, int expextedVersion, CancellationToken cancellationToken)
         {
-            var product = await _context.Products.FindAsync([id], cancellationToken);
+            var product = await context.Products.FindAsync([id], cancellationToken);
             if (product is null) return false;
 
-            _context.Products.Remove(product);
-            await _context.SaveChangesAsync(cancellationToken);
+            context.Entry(product).Property(p => p.Version).OriginalValue = expextedVersion;
+
+            context.Products.Remove(product);
+
             return true;
         }
-
     }
 }

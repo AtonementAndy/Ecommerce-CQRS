@@ -5,7 +5,6 @@ using MassTransit;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Logging;
 using MongoDB.Driver;
-using static MassTransit.Monitoring.Performance.BuiltInCounters;
 
 public class DeletedProductConsumer(
     ILogger<DeletedProductConsumer> logger,

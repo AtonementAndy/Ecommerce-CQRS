@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "RcSP0I3H5pY=",
+  "dgSpecHash": "N84MPEtX88w=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Andy\\Documents\\Prog\\aspnet\\Studies\\Ecommerce\\src\\Ecommerce.Domain\\Ecommerce.Domain.csproj",
+  "projectFilePath": "C:\\Users\\Andy\\Documents\\Prog\\aspnet\\Studies\\Ecommerce-CQRS\\src\\Ecommerce.Domain\\Ecommerce.Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

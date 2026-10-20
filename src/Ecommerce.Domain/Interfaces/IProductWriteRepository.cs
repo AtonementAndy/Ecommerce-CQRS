@@ -4,8 +4,9 @@ namespace Ecommerce.Domain.Interfaces
 {
     public interface IProductWriteRepository
     {
-        Task<Product?> GetByIdAsync(Guid id, CancellationToken cancellationToken);
-        Task<bool> UpdateASync(Guid id, Product product, CancellationToken cancellationToken);
-        Task<bool> DeleteAsync(Guid id, CancellationToken cancellationToken);
+        //Task<Product?> GetByIdForUpdateAsync(Guid id, CancellationToken ct);
+        Task<Product> AddAsync(Product productEvent, CancellationToken cancellationToken);
+        Task<Product?> UpdateAsync(Guid id, string name, string description, decimal price, int stock, CancellationToken cancellationToken);
+        Task<bool> DeleteAsync(Guid id, int version, CancellationToken cancellationToken);
     }
 }

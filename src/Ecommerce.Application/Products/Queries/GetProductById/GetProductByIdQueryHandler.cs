@@ -7,7 +7,7 @@ using System.Text.Json;
 
 namespace Ecommerce.Application.Products.Queries.GetProductById
 {
-    internal class GetProductByIdQueryHandler(IProductRepository repository, IDistributedCache cache) : IRequestHandler<GetProductByIdQuery, ProductDto?>
+    internal class GetProductByIdQueryHandler(IProductReadRepository repository, IDistributedCache cache) : IRequestHandler<GetProductByIdQuery, ProductDto?>
     {
         public async Task<ProductDto?> Handle(GetProductByIdQuery request, CancellationToken cancellationToken)
         {

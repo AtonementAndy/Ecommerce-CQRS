@@ -14,7 +14,8 @@ namespace Ecommerce.Infrastructure.Data
 
             modelBuilder.Entity<Product>()
                 .HasIndex(p => p.Name)
-                .IsUnique();
+                .IsUnique()
+                .HasDatabaseName("IX_Products_Name");
 
             modelBuilder.Entity<Product>(builder =>
             {

@@ -7,7 +7,7 @@ using MediatR;
 namespace Ecommerce.Application.Products.Commands.DeleteProduct
 {
     public class DeleteProductCommandHandler(
-        IProductRepository repository, 
+        IProductWriteRepository repository, 
         IUnitOfWork unitOfWork,
         IOutboxWriter outboxWriter) : IRequestHandler<DeleteProductCommand, Unit>
     {

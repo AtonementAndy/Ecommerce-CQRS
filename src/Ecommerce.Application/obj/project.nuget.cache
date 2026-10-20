@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "uS2EOgCH/pQ=",
+  "dgSpecHash": "iUVqVsvj6xs=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Andy\\Documents\\Prog\\aspnet\\Studies\\Ecommerce\\src\\Ecommerce.Application\\Ecommerce.Application.csproj",
+  "projectFilePath": "C:\\Users\\Andy\\Documents\\Prog\\aspnet\\Studies\\Ecommerce-CQRS\\src\\Ecommerce.Application\\Ecommerce.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Andy\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
     "C:\\Users\\Andy\\.nuget\\packages\\fluentvalidation\\11.10.0\\fluentvalidation.11.10.0.nupkg.sha512",

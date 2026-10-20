@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Ecommerce.Application.Products.Commands.UpdateProduct
 {
     public class UpdateProductCommandHandler(
-        IProductRepository repository,
+        IProductWriteRepository repository,
         IUnitOfWork unitOfWork,
         IOutboxWriter outboxWriter
         ) : IRequestHandler<UpdateProductCommand, Guid>

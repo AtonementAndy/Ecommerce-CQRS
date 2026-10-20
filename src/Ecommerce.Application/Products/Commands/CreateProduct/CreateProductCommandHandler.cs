@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Ecommerce.Application.Products.Commands.CreateProduct
 {
     public sealed class CreateProductCommandHandler(
-        IProductRepository repository,
+        IProductWriteRepository repository,
         IOutboxWriter outboxWriter,
         IUnitOfWork unitOfWork) : IRequestHandler<CreateProductCommand, Guid>
     {
