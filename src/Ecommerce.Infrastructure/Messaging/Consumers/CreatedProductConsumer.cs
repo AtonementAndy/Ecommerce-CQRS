@@ -29,7 +29,7 @@ namespace Ecommerce.Infrastructure.Messaging.Consumers
             if (existing is not null && message.Version <= existing.Version)
             {
                 logger.LogInformation(
-                    "[RabbitMQ] Created ignorado (duplicated). Id={Id}, Version={V}",
+                    "[RabbitMQ] Created ignoraded (duplicated). Id={Id}, Version={V}",
                     message.Id, message.Version);
                 return;
             }

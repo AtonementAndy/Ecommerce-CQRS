@@ -37,7 +37,7 @@ public class DeletedProductConsumer(
         }
         catch (Exception ex)
         {
-            logger.LogError(ex, "Falha ao invalidar cache após delete (ID: {Id})", id);
+            logger.LogError(ex, "Failed to invalid cache fater delete (ID: {Id})", id);
         }
 
     }

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Ecommerce.Infrastructure.Migrations
 {
     [DbContext(typeof(EcommerceDbContext))]
-    [Migration("20261019231145_InitialCreation")]
+    [Migration("20261020180206_InitialCreation")]
     partial class InitialCreation
     {
         /// <inheritdoc />
@@ -108,7 +108,8 @@ namespace Ecommerce.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("Name")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasDatabaseName("IX_Products_Name");
 
                     b.ToTable("Products");
                 });

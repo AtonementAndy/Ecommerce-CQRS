@@ -1,8 +1,8 @@
 ﻿using Ecommerce.Application.Common.OutBox;
 using Ecommerce.Domain.Interfaces;
-using Ecommerce.Application.Common.Events;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Ecommerce.Infrastructure.Messaging.Events;
 
 namespace Ecommerce.Application.Products.Commands.UpdateProduct
 {
@@ -10,9 +10,9 @@ namespace Ecommerce.Application.Products.Commands.UpdateProduct
         IProductWriteRepository repository,
         IUnitOfWork unitOfWork,
         IOutboxWriter outboxWriter
-        ) : IRequestHandler<UpdateProductCommand, Guid>
+        ) : IRequestHandler<UpdateProductCommand, Unit>
     {
-        public async Task<Guid> Handle(UpdateProductCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(UpdateProductCommand request, CancellationToken cancellationToken)
         {
             var product = await repository.UpdateAsync(
                 request.Id,
@@ -20,10 +20,11 @@ namespace Ecommerce.Application.Products.Commands.UpdateProduct
                 request.Description,
                 request.Price,
                 request.Stock,
+                request.ExpectedVersion,
                 cancellationToken
             ) ?? throw new KeyNotFoundException($"Product with ID {request.Id} not found.");
 
-            var eventMessage = new ProductCreatedEvent(
+            var eventMessage = new ProductUpdatedEvent(
                 product.Id,
                 product.Name,
                 product.Description,
@@ -31,21 +32,22 @@ namespace Ecommerce.Application.Products.Commands.UpdateProduct
                 product.Stock,
                 product.UpdatedAt,
                 product.Version
+
             );
+
+            await outboxWriter.EnqueueAsync("Product", eventMessage, cancellationToken);
 
             try
             {
-                await outboxWriter.EnqueueAsync("Product", eventMessage, cancellationToken);
                 await unitOfWork.SaveChangesAsync(cancellationToken);
             }
             catch (DbUpdateConcurrencyException)
             {
-                // O produto foi alterado por outro processo/usuário entre o FindAsync e o SaveChanges
                 throw new InvalidOperationException(
                     $"The product with ID {request.Id} was modified by another user. Please refresh and try again.");
             }
 
-            return product.Id;
+            return Unit.Value;
         }
     }
 }

@@ -59,18 +59,40 @@ namespace Ecommerce.API.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status409Conflict)]
         public async Task<IActionResult> Update(Guid id, [FromBody] UpdateProductRequest request, CancellationToken cancellationToken)
         {
+            var ifMatch = Request.Headers.IfMatch.ToString();
+
+            if (string.IsNullOrWhiteSpace(ifMatch))
+                return BadRequest(new { Message = "If-Match header is required for update operations." });
+
+            var versionString = ifMatch.Trim('"');
+            if (!int.TryParse(versionString, out var expectedVersion))
+                return BadRequest(new { Message = "Invalid If-Match header format. Expected a numeric version." });
+
             var command = new UpdateProductCommand(
                 id,
                 request.Name,
                 request.Description,
                 request.Price,
-                request.Stock
+                request.Stock,
+                expectedVersion
             );
-            await mediator.Send(command, cancellationToken);
 
-            return NoContent();
+            try
+            {
+                await mediator.Send(command, cancellationToken);
+                return NoContent();
+            }
+            catch (KeyNotFoundException)
+            {
+                return NotFound();
+            }
+            catch (InvalidOperationException ex) when (ex.Message.Contains("modified by another user."))
+            {
+                return Conflict(new { Message = ex.Message });
+            }
         }
 
         [HttpDelete("{id}")]

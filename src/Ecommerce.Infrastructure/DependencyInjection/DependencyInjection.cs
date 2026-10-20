@@ -35,6 +35,7 @@ namespace Ecommerce.Infrastructure.DependencyInjection
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IProductReadRepository, ProductReadRepository>();
+            services.AddScoped<IProductWriteRepository, ProductWriteRepository>();
             services.AddScoped<IOutboxWriter, OutboxWriter>();
             services.AddHostedService<OutboxPublisher>();
             services.AddEndpointsApiExplorer();

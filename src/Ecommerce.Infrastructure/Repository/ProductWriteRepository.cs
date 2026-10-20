@@ -13,12 +13,10 @@ namespace Ecommerce.Infrastructure.Repository
             return product;
         }
 
-        public async Task<Product?> UpdateAsync(Guid id, string name, string description, decimal price, int stock, CancellationToken cancellationToken)
+        public async Task<Product?> UpdateAsync(Guid id, string name, string description, decimal price, int stock, int expextedVersion, CancellationToken cancellationToken)
         {
             var product = await context.Products.FindAsync([id], cancellationToken);
             if (product is null) return null;
-
-            //context.Entry(product).Property(p => p.Version).OriginalValue = expectedVersion;
 
             product.UpdateDetails(
                 name,
@@ -26,6 +24,8 @@ namespace Ecommerce.Infrastructure.Repository
                 price,
                 stock
             );
+
+            context.Entry(product).Property(p => p.Version).OriginalValue = expextedVersion;
 
             return product;
         }
