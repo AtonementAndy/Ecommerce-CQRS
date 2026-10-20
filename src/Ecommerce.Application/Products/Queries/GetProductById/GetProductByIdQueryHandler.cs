@@ -3,7 +3,6 @@ using Ecommerce.Application.Dtos;
 using Ecommerce.Domain.Interfaces;
 using MediatR;
 using Microsoft.Extensions.Caching.Distributed;
-using MongoDB.Driver;
 using System.Text.Json;
 
 namespace Ecommerce.Application.Products.Queries.GetProductById
@@ -43,7 +42,9 @@ namespace Ecommerce.Application.Products.Queries.GetProductById
                 product.Description,
                 product.Price,
                 product.Stock,
-                product.CreatedAt
+                product.CreatedAt,
+                product.UpdatedAt,
+                product.Version
             );
 
             return productDto;

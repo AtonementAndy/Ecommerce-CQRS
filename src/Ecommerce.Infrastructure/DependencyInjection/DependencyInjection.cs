@@ -1,6 +1,8 @@
-﻿using Ecommerce.Domain.Interfaces;
+﻿using Ecommerce.Application.Common.OutBox;
+using Ecommerce.Domain.Interfaces;
 using Ecommerce.Infrastructure.Data;
 using Ecommerce.Infrastructure.Messaging.Consumers;
+using Ecommerce.Infrastructure.Outbox;
 using Ecommerce.Infrastructure.Repository;
 using MassTransit;
 using Microsoft.AspNetCore.Builder;
@@ -31,8 +33,10 @@ namespace Ecommerce.Infrastructure.DependencyInjection
                     sqlOptions.CommandTimeout(30);
                 }));
 
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IProductRepository, ProductRespository>();
-            services.AddScoped<IProductWriteRepository, ProductWriteRepository>();
+            services.AddScoped<IOutboxWriter, OutboxWriter>();
+            services.AddHostedService<OutboxPublisher>();
             services.AddEndpointsApiExplorer();
 
             services.AddHsts(options =>
@@ -42,7 +46,7 @@ namespace Ecommerce.Infrastructure.DependencyInjection
                 options.Preload = true;
             });
 
-            // 2. MongoDB (Proteção contra re-registro em Design-Time)
+            // MongoDB (Proteção contra duplicar registro em Design-Time)
             try
             {
                 BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
@@ -95,8 +99,6 @@ namespace Ecommerce.Infrastructure.DependencyInjection
                     config.ConfigureEndpoints(context);
                 });
             });
-
-            services.AddProblemDetails();
 
             return services;
         }

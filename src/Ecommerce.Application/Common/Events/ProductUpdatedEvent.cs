@@ -10,6 +10,7 @@ namespace Ecommerce.Infrastructure.Messaging.Events
         [Required] string Description,
         [Required] decimal Price,
         [Required] int Stock,
-        DateTime CreatedAt
+        DateTime UpdatedAt,
+        int Version
     );
 }

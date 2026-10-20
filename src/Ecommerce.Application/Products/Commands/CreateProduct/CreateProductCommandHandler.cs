@@ -1,31 +1,23 @@
-﻿using Ecommerce.Application.Common.Cache;
-using Ecommerce.Application.Common.Events;
+﻿using Ecommerce.Application.Common.Events;
+using Ecommerce.Application.Common.OutBox;
 using Ecommerce.Domain.Entities;
 using Ecommerce.Domain.Interfaces;
-using MassTransit;
 using MediatR;
-using Microsoft.Extensions.Caching.Distributed;
-using System.Text.Json;
+using Microsoft.EntityFrameworkCore;
 
 namespace Ecommerce.Application.Products.Commands.CreateProduct
 {
     public sealed class CreateProductCommandHandler(
-        IProductRepository repository, 
-        IPublishEndpoint publishEndpoint, 
-        IDistributedCache cache) : IRequestHandler<CreateProductCommand, Guid>
+        IProductRepository repository,
+        IOutboxWriter outboxWriter,
+        IUnitOfWork unitOfWork) : IRequestHandler<CreateProductCommand, Guid>
     {
         public async Task<Guid> Handle(CreateProductCommand request, CancellationToken cancellationToken)
         {
-            var productExists = await repository.ExistsByNameAsync(request.Name, cancellationToken);
-            if (productExists)
-            {
-                throw new InvalidOperationException($"There is already a registered product with the name '{request.Name}'.");
-            }
-
             var product = new Product(
-                request.Name, 
-                request.Description, 
-                request.Price, 
+                request.Name,
+                request.Description,
+                request.Price,
                 request.Stock
             );
 
@@ -37,23 +29,20 @@ namespace Ecommerce.Application.Products.Commands.CreateProduct
                 product.Description,
                 product.Price,
                 product.Stock,
-                product.CreatedAt
+                product.CreatedAt,
+                product.Version
             );
 
-            var cacheKey = CacheKeys.GetProductByIdKey(product.Id);
-            var cacheKeyPaginated = CacheKeys.GetProductsKey(1, 10);
+            await outboxWriter.EnqueueAsync("Product", eventMessage, cancellationToken);
 
-            await cache.SetStringAsync(
-                cacheKey, 
-                JsonSerializer.Serialize(eventMessage), 
-                CacheOptions.DefaultExpiration, 
-                cancellationToken
-            );
-
-            //await cache.RemoveAsync(cacheKey, cancellationToken);
-            await cache.RemoveAsync(cacheKeyPaginated, cancellationToken);
-
-            await publishEndpoint.Publish(eventMessage, cancellationToken);
+            try
+            {
+                await unitOfWork.SaveChangesAsync(cancellationToken);
+            }
+            catch (DbUpdateException ex) when (ex.InnerException?.Message.Contains("IX_Products_Name") == true)
+            {
+                throw new InvalidOperationException($"There is already a registered product with the name '{request.Name}'.");
+            }
 
             return product.Id;
         }

@@ -6,6 +6,8 @@
         string Description,
         decimal Price,
         int Stock,
-        DateTime CreatedAt
+        DateTime CreatedAt,
+        DateTime UpdatedAt,
+        int Version
     );
 }

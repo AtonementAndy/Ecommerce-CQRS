@@ -8,6 +8,8 @@
         public decimal Price { get; private set; }
         public int Stock { get; private set; }
         public DateTime CreatedAt { get; private set; }
+        public DateTime UpdatedAt { get; private set; }
+        public int Version { get; private set; }
 
         protected Product() { }
 
@@ -20,9 +22,10 @@
             Price = price;
             Stock = stock;
             CreatedAt = DateTime.UtcNow;
+            Version = 1;
         }
 
-        public Product(Guid id, string name, string description, decimal price, int stock, DateTime createdAt)
+        public Product(Guid id, string name, string description, decimal price, int stock, DateTime createdAt, DateTime updatedAt, int version)
         {
             Id = id;
             Name = name;
@@ -30,18 +33,20 @@
             Price = price;
             Stock = stock;
             CreatedAt = createdAt;
+            UpdatedAt = updatedAt;
+            Version = version;
         }
 
         public void UpdateDetails(string name, string description, decimal price, int stock)
         {
             if (string.IsNullOrWhiteSpace(name))
-                throw new ArgumentException("The product name is mandatory.");
+                throw new ArgumentException("The product name is required.");
 
             if (string.IsNullOrWhiteSpace(description))
-                throw new ArgumentException("The description is mandatory.");
+                throw new ArgumentException("The description is required.");
 
             if (price <= 0)
-                throw new ArgumentException("The price is mandatory and can't be less than 0.");
+                throw new ArgumentException("The price is required and can't be less than 0.");
 
             if (stock < 0)
                 throw new ArgumentException("The stock can't less than 0.");
@@ -50,6 +55,8 @@
             Description = description;
             Price = price;
             Stock = stock;
+            UpdatedAt = DateTime.UtcNow;
+            Version++;
         }
     }
 }

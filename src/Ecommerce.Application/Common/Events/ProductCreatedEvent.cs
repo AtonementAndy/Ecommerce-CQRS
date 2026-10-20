@@ -10,6 +10,7 @@ namespace Ecommerce.Application.Common.Events
         [Required] string Description,
         [Required] decimal Price,
         [Required] int Stock,
-        DateTime CreatedAt
+        DateTime CreatedAt,
+        int Version
     );
 }

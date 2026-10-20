@@ -1,60 +1,50 @@
 # 🚀 Ecommerce CQRS API (.NET 9)
 
-A modern, robust, and highly scalable high-performance e-commerce backend, built with .NET 9, following the principles of Clean Architecture, CQRS, Polyglot Persistence (SQL Server + MongoDB), Asynchronous Messaging (RabbitMQ + MassTransit), Distributed Cache (Redis), and JWT Authentication with Policies.
+Um backend de e-commerce moderno, robusto e escalável de alta performance, construído com **.NET 9**, seguindo os princípios de **Clean Architecture**, **CQRS**, **Persistência Poliglota** (SQL Server + MongoDB), **Mensageria Assíncrona** (RabbitMQ + MassTransit), **Cache Distribuído** (Redis) e **Autenticação JWT com Policies**.
+
+---
+
+## 🛠️ Tech Stack & Ferramentas
+
+* **Linguagem & Framework:** C# 13, .NET 9, ASP.NET Core Web API
+* **Arquitetura:** Clean Architecture, CQRS (MediatR), Domain-Driven Design (DDD)
+* **Write Model (Banco Relacional):** SQL Server via Entity Framework Core 9 (Code-First & Migrations)
+* **Read Model (Banco Não-Relacional):** MongoDB (Sincronizado via Mensageria)
+* **Mensageria & Event-Driven:** MassTransit com RabbitMQ
+* **Cache & Invalidation:** Redis (StackExchangeRedis) com Cache-Aside Pattern
+* **Validação & Documentação:** FluentValidation, Scalar / OpenAPI (.NET 9 nativo)
+* **Segurança:** ASP.NET Core Identity / JWT Bearer com Policy-Based Authorization (`CatalogManagement`, `AdminOnly`)
+
+---
 
 
-## 🛠️ Tech Stack & Tools
+# 🐳 Infraestrutura (Docker)
 
-- Language and Framework: C# 13, .NET 9, ASP.NET Core Web API
-- Architecture: Clean Architecture, CQRS (MediatR), Domain-Driven Design (DDD)
-- Write Model (Relational Database): SQL Server via Entity Framework Core 9 (Code-First and Migrations)
-- Read Model (Non-Relational Database): MongoDB (Syncing with MessageBroker)
-- MessageBroker and Event-Driven: MassTransit com RabbitMQ
-- Cache & Invalidation: Redis (StackExchangeRedis) with Cache-Aside Pattern
-- Validation and Documentation: FluentValidation, Scalar / OpenAPI (.NET 9 nativo)
-- Security: ASP.NET Core Identity / JWT Bearer com Policy-Based Authorization (CatalogManagement, AdminOnly)
+O projeto depende de serviços externos para mensageria, cache e bancos de dados. Para subir tudo rapidamente, utilize o Docker.
 
-
-# 🐳 Infrastructure (Docker)
-
-The project depends on external services for messaging, caching, and databases. To spin everything up quickly, use Docker.
-
-### 1. Download and Run the Containers
-Make sure you have Docker Desktop installed and run the commands below to pull the official images and start the services:
+### 1. Baixar e Rodar os Containers
+Certifique-se de ter o Docker Desktop instalado e execute os comandos abaixo para puxar as imagens oficiais e iniciar os serviços:
 
 ## SQL Server (Write Database)
-```
-docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Your_Password123" -p 1433:1433 --name sqlserver -d [mcr.microsoft.com/mssql/server:2022-latest](https://mcr.microsoft.com/mssql/server:2022-latest)
-```
+```docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Your_Password123" -p 1433:1433 --name sqlserver -d [mcr.microsoft.com/mssql/server:2022-latest](https://mcr.microsoft.com/mssql/server:2022-latest)```
 
 ## MongoDB (Read Model Database)
-```
-docker run -p 27017:27017 --name mongodb -d mongo:latest
-```
+```docker run -p 27017:27017 --name mongodb -d mongo:latest```
 
 ## Redis (Distributed Cache)
-```
-docker run -p 6379:6379 --name redis -d redis:latest
-```
+```docker run -p 6379:6379 --name redis -d redis:latest```
 
 ## RabbitMQ (Message Broker com Management UI)
-```
-docker run -p 5672:5672 -p 15672:15672 --name rabbitmq -d rabbitmq:3-management
-```
+```docker run -p 5672:5672 -p 15672:15672 --name rabbitmq -d rabbitmq:3-management```
 
 
-# ⚙️ Environment Configuration
+# ⚙️ Configuração do Ambiente
 
-Clone the repository to your machine:
-git clone [https://github.com/AtonementAndy/Ecommerce-CQRS.git](https://github.com/AtonementAndy/Ecommerce-CQRS.git)
+1. Clone o repositório na sua máquina:
+```git clone [https://github.com/AtonementAndy/Ecommerce-CQRS.git](https://github.com/AtonementAndy/Ecommerce-CQRS.git)```
+```cd Ecommerce-CQRS```
 
-Then, inside the project folder:
-```
-cd Ecommerce-CQRS
-```
-
-
-Configure the connection strings and JWT keys in the appsettings.json file, located in the Ecommerce.API project:
+Configure as strings de conexão e chaves JWT no arquivo appsettings.json, localizado no projeto Ecommerce.API:
 
 ```"ConnectionStrings"
     "DefaultConnection": "Server=localhost,1433;Database=EcommerceDb;User Id=sa;Password=Your_Password123;TrustServerCertificate=True;Encrypt=Optional;",
@@ -71,42 +61,42 @@ Configure the connection strings and JWT keys in the appsettings.json file, loca
   "CollectionName": "ProductsReadModel"
 ```
 
-# 🏃‍♂️ How to run the Project
+# 🏃‍♂️ Como Rodar o Projeto
 
-1. Apply the EF Core Migrations (SQL Server):
-Open a terminal at the root of the project and run:
+1. Aplicar as Migrations do EF Core (SQL Server):
+Abra o terminal na raiz do projeto e execute:
 ```
 dotnet ef database update --project src/Ecommerce.Infrastructure --startup-project src/Ecommerce.API
 ```
 
-2. Execute the API:
+2. Executar a API:
 ```
 dotnet run --project src/Ecommerce.API
 ```
 
-Access the Documentation (Scalar / OpenAPI):
-With the application running, open your browser and go to the Scalar route configured to test the catalog, authentication, and product management endpoints.
-Note: As soon as the project runs, grab the localhost port and change it here:
+Acessar a Documentação (Scalar / OpenAPI):
+Com a aplicação rodando, abra o navegador e acesse a rota do Scalar configurada para testar os endpoints de catálogo, autenticação e gerenciamento de produtos.
+Obs.: Assim que o projeto rodar, pegue a porta do localhost e mude aqui: 
 ```
 https://localhost:7238/scalar/v1
 ```
 
-Authentication and Profiles (Roles / Policies)
-The modification and management endpoints require valid JWT tokens generated with the corresponding claims (CatalogManagement or Admin for deletions).
+Autenticação e Perfis (Roles / Policies)
+Os endpoints de alteração e gerenciamento exigem tokens JWT válidos gerados com as claims correspondentes (CatalogManagement ou Admin para exclusões).
 
-# 🔑 How to Generate a JWT Token for Testing
+# 🔑 Como Gerar um Token JWT para Testes
 
-Since the API validates JWT tokens signed with the secret key configured in your appsettings.json, you can quickly generate a test token through the jwt.io website:
-1. Go to the website: [https://jwt.io/](https://jwt.io/)
-2. Configure the Header:
+Como a API valida tokens JWT assinados com a chave secreta configurada no seu appsettings.json, você pode gerar um token de teste rapidamente através do site jwt.io:
+1. Acesse o site: [https://jwt.io/](https://jwt.io/)
+2. Configure o Header (Cabeçalho):
 ```
 {
   "alg": "HS256",
   "typ": "JWT"
 }
 ```
-3. Configure the Payload (Body with the permissions/Roles):
-   To test management routes (CatalogManagement):
+3. Configure o Payload (Corpo com as permissões/Roles):
+   Para testar rotas de gerenciamento (CatalogManagement):
 ```
 {
   "sub": "1234567890",
@@ -118,14 +108,14 @@ Since the API validates JWT tokens signed with the secret key configured in your
   "exp": 2000000000
 }
 ```
-To test restricted deletion routes (AdminOnly):
-Change the "role" field to "Admin".
+Para testar rotas restritas de exclusão (AdminOnly):
+Mude o campo "role" para "Admin".
 
-4. Sign the Token:
-   At the bottom of the signature box (Verify Signature), paste the same secret key that is configured in your JwtSettings:Secret in the appsettings.json file.
+4. Assine o Token:
+  Na parte inferior da caixa de assinatura (Verify Signature), cole a mesma chave secreta que está configurada no seu JwtSettings:Secret no arquivo appsettings.json.
 
-6. CCopy and Use:
-    Copy the token generated in the left box (Encoded), go to the Scalar interface in your API,
-    click the authorization button (Bearer), and paste the token so you can successfully fire the protected requests!
+5. Copie e Use:
+  Copie o token gerado na caixa da esquerda (Encoded), vá até a interface do Scalar na sua API,
+  clique no botão de autorização (Bearer) e cole o token para conseguir disparar as requisições protegidas com sucesso!
 
-It's still under construction. 👍
+

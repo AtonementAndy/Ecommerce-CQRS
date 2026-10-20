@@ -1,52 +1,49 @@
-﻿using Ecommerce.Application.Common.Cache;
-using Ecommerce.Domain.Entities;
+﻿using Ecommerce.Application.Common.OutBox;
 using Ecommerce.Domain.Interfaces;
-using Ecommerce.Infrastructure.Messaging.Events;
-using MassTransit;
+using Ecommerce.Application.Common.Events;
 using MediatR;
-using Microsoft.Extensions.Caching.Distributed;
+using Microsoft.EntityFrameworkCore;
 
 namespace Ecommerce.Application.Products.Commands.UpdateProduct
 {
     public class UpdateProductCommandHandler(
-        IProductWriteRepository repository, 
-        IDistributedCache cache, 
-        IPublishEndpoint publishEndpoint) : IRequestHandler<UpdateProductCommand, Guid>
+        IProductRepository repository,
+        IUnitOfWork unitOfWork,
+        IOutboxWriter outboxWriter
+        ) : IRequestHandler<UpdateProductCommand, Guid>
     {
         public async Task<Guid> Handle(UpdateProductCommand request, CancellationToken cancellationToken)
         {
-            var product = await repository.GetByIdAsync(request.Id, cancellationToken) 
-                ?? throw new ArgumentNullException($"Product with ID {request.Id} not found.");
-
-            var updatedProductDetails = new Product(
+            var product = await repository.UpdateAsync(
                 request.Id,
                 request.Name,
                 request.Description,
                 request.Price,
                 request.Stock,
-                product.CreatedAt
+                cancellationToken
+            ) ?? throw new KeyNotFoundException($"Product with ID {request.Id} not found.");
+
+            var eventMessage = new ProductCreatedEvent(
+                product.Id,
+                product.Name,
+                product.Description,
+                product.Price,
+                product.Stock,
+                product.UpdatedAt,
+                product.Version
             );
 
-            var sucess = await repository.UpdateASync(request.Id, updatedProductDetails, cancellationToken);
-            if(!sucess)
-                throw new InvalidOperationException($"Could not update product with ID {request.Id}.");
-
-            var eventMessage = new ProductUpdatedEvent(
-                updatedProductDetails.Id,
-                updatedProductDetails.Name,
-                updatedProductDetails.Description,
-                updatedProductDetails.Price,
-                updatedProductDetails.Stock,
-                updatedProductDetails.CreatedAt
-            );
-
-            await publishEndpoint.Publish(eventMessage, cancellationToken);
-
-            var cacheKey = CacheKeys.GetProductByIdKey(request.Id);
-            var cacheKeyPaginated = CacheKeys.GetProductsKey(1, 10);
-
-            await cache.RemoveAsync(cacheKey, cancellationToken);
-            await cache.RemoveAsync(cacheKeyPaginated, cancellationToken);
+            try
+            {
+                await outboxWriter.EnqueueAsync("Product", eventMessage, cancellationToken);
+                await unitOfWork.SaveChangesAsync(cancellationToken);
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                // O produto foi alterado por outro processo/usuário entre o FindAsync e o SaveChanges
+                throw new InvalidOperationException(
+                    $"The product with ID {request.Id} was modified by another user. Please refresh and try again.");
+            }
 
             return product.Id;
         }

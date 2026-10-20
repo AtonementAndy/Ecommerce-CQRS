@@ -15,5 +15,8 @@ namespace Ecommerce.Application.Dtos
         public decimal Price { get; set; }
         public int Stock { get; set; }
         public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
+        public bool IsDeleted { get; set; }
+        public int Version { get; set; }
     }
 }

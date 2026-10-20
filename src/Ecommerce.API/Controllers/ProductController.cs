@@ -34,6 +34,12 @@ namespace Ecommerce.API.Controllers
             if (product is null)
                 return NotFound(new { Message = $"Product ID {id} wasn't found." });
 
+            var etag = $"\"{product.Version}\"";
+            Response.Headers.ETag = etag;
+
+            if (Request.Headers.IfNoneMatch == etag)
+                return StatusCode(StatusCodes.Status304NotModified);
+
             return Ok(product);
         }
 
@@ -73,7 +79,21 @@ namespace Ecommerce.API.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Delete(Guid id, CancellationToken cancellationToken)
         {
-            await mediator.Send(new DeleteProductCommand(id), cancellationToken);
+            var ifMatch = Request.Headers.IfMatch.ToString();
+
+            if (string.IsNullOrWhiteSpace(ifMatch))
+            {
+                return BadRequest(new { Message = "If-Match header is required for delete operations." });
+            }
+
+            // Remove aspas e faz parse
+            var versionString = ifMatch.Trim('"');
+            if (!int.TryParse(versionString, out var version))
+            {
+                return BadRequest(new { Message = "Invalid If-Match header format. Expected a numeric version." });
+            }
+
+            await mediator.Send(new DeleteProductCommand(id, version), cancellationToken);
             return NoContent();
         }
 

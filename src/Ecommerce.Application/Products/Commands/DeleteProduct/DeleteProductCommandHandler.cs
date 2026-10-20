@@ -1,32 +1,35 @@
 ﻿using Ecommerce.Application.Common.Cache;
 using Ecommerce.Application.Common.Events;
+using Ecommerce.Application.Common.OutBox;
 using Ecommerce.Domain.Interfaces;
-using MassTransit;
 using MediatR;
-using Microsoft.Extensions.Caching.Distributed;
 
 namespace Ecommerce.Application.Products.Commands.DeleteProduct
 {
     public class DeleteProductCommandHandler(
-        IProductWriteRepository repository, 
-        IDistributedCache cache, 
-        IPublishEndpoint publishEndpoint) : IRequestHandler<DeleteProductCommand, Unit>
+        IProductRepository repository, 
+        IUnitOfWork unitOfWork,
+        IOutboxWriter outboxWriter) : IRequestHandler<DeleteProductCommand, Unit>
     {
         public async Task<Unit> Handle(DeleteProductCommand request, CancellationToken cancellationToken)
         {
-            var product = await repository.GetByIdAsync(request.Id, cancellationToken)
-                ?? throw new KeyNotFoundException($"Product with ID '{request.Id}' was not found.");
+            var deleted = await repository.DeleteAsync(
+                request.Id, 
+                request.Version,
+                cancellationToken
+            );
 
-            await repository.DeleteAsync(product.Id, cancellationToken);
+            if (!deleted)
+                throw new KeyNotFoundException($"Product with ID {request.Id} not found.");
 
-            var eventMessage = new ProductDeletedEvent(product.Id);
-            await publishEndpoint.Publish(eventMessage, cancellationToken);
+            var eventMessage = new ProductDeletedEvent(
+                request.Id, 
+                request.Version + 1
+            );
 
-            var cacheKey = CacheKeys.GetProductByIdKey(product.Id);
-            var cacheKeyPaginated = CacheKeys.GetProductsKey(1, 10);
+            await outboxWriter.EnqueueAsync("Product", eventMessage, cancellationToken);
 
-            await cache.RemoveAsync(cacheKey, cancellationToken);
-            await cache.RemoveAsync(cacheKeyPaginated, cancellationToken);
+            await unitOfWork.SaveChangesAsync(cancellationToken);
 
             return Unit.Value;
 
