@@ -46,5 +46,12 @@ namespace Ecommerce.Domain.Entities
             Error = error.Length > 2000 ? error[..2000] : error;
             RetryCount++;
         }
+
+        public void MarkAsProcessing()
+        {
+            Status = OutboxStatus.Processing;
+            ProcessedAt = DateTime.UtcNow;
+            Error = null;
+        }
     }
 }

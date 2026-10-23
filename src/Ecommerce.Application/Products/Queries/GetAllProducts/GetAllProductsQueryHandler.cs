@@ -1,6 +1,6 @@
 ﻿using Ecommerce.Application.Common.Cache;
+using Ecommerce.Application.Common.Interfaces;
 using Ecommerce.Application.Dtos;
-using Ecommerce.Domain.Interfaces;
 using MediatR;
 using Microsoft.Extensions.Caching.Distributed;
 using System.Text.Json;

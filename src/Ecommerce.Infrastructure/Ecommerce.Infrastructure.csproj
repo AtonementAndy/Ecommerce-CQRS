@@ -12,10 +12,10 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="9.0.0" />
     <PackageReference Include="MongoDB.Driver" Version="3.12.0" />
-    <PackageReference Include="Polly" Version="8.8.0" />
   </ItemGroup>
 
   <ItemGroup>
+	  <ProjectReference Include="..\Ecommerce.Domain\Ecommerce.Domain.csproj" />
     <ProjectReference Include="..\Ecommerce.Application\Ecommerce.Application.csproj" />
   </ItemGroup>
 	

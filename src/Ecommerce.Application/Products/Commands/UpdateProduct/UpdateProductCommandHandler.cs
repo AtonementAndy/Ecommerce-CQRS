@@ -2,7 +2,7 @@
 using Ecommerce.Domain.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Ecommerce.Infrastructure.Messaging.Events;
+using Ecommerce.Application.Common.Events;
 
 namespace Ecommerce.Application.Products.Commands.UpdateProduct
 {

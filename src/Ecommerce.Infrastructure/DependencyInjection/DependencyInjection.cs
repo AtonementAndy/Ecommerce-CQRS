@@ -1,4 +1,5 @@
-﻿using Ecommerce.Application.Common.OutBox;
+﻿using Ecommerce.Application.Common.Interfaces;
+using Ecommerce.Application.Common.OutBox;
 using Ecommerce.Domain.Interfaces;
 using Ecommerce.Infrastructure.Data;
 using Ecommerce.Infrastructure.Messaging.Consumers;

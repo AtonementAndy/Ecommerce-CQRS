@@ -29,7 +29,7 @@ namespace Ecommerce.Infrastructure.Outbox
                         .Where(o => o.Status == OutboxStatus.Pending)
                         .OrderBy(o => o.CreatedAt)
                         .Take(50)
-                        .ToListAsync(stoppingToken);
+                        .ToListAsync(stoppingToken);                    
 
                     foreach (var message in pending)
                     {

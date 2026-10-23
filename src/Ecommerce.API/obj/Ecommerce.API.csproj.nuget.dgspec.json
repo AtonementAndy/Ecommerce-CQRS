@@ -312,6 +312,9 @@
             "projectReferences": {
               "C:\\Users\\Andy\\Documents\\Prog\\aspnet\\Studies\\Ecommerce-CQRS\\src\\Ecommerce.Application\\Ecommerce.Application.csproj": {
                 "projectPath": "C:\\Users\\Andy\\Documents\\Prog\\aspnet\\Studies\\Ecommerce-CQRS\\src\\Ecommerce.Application\\Ecommerce.Application.csproj"
+              },
+              "C:\\Users\\Andy\\Documents\\Prog\\aspnet\\Studies\\Ecommerce-CQRS\\src\\Ecommerce.Domain\\Ecommerce.Domain.csproj": {
+                "projectPath": "C:\\Users\\Andy\\Documents\\Prog\\aspnet\\Studies\\Ecommerce-CQRS\\src\\Ecommerce.Domain\\Ecommerce.Domain.csproj"
               }
             }
           }
@@ -366,10 +369,6 @@
             "MongoDB.Driver": {
               "target": "Package",
               "version": "[3.12.0, )"
-            },
-            "Polly": {
-              "target": "Package",
-              "version": "[8.8.0, )"
             }
           },
           "imports": [
