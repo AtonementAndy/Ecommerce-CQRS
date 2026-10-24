@@ -1,5 +1,9 @@
 # 🚀 Ecommerce CQRS API (.NET 9)
 
+<h1>
+ 👷‍♂️🚧🚧🚧 Under Construction 🚧🚧🚧👷‍♂️
+</h1>
+
 Um backend de e-commerce moderno, robusto e escalável de alta performance, construído com **.NET 9**, seguindo os princípios de **Clean Architecture**, **CQRS**, **Persistência Poliglota** (SQL Server + MongoDB), **Mensageria Assíncrona** (RabbitMQ + MassTransit), **Cache Distribuído** (Redis) e **Autenticação JWT com Policies**.
 
 ---
