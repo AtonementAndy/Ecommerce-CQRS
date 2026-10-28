@@ -125,3 +125,4 @@ Mude o campo "role" para "Admin".
   clique no botão de autorização (Bearer) e cole o token para conseguir disparar as requisições protegidas com sucesso!
 
 
+Made with ❤️ by [AtonementAndy](https://github.com/AtonementAndy)
