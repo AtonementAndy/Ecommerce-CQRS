@@ -1,8 +1,8 @@
-using Ecommerce.Application.Common.Events;
 using Ecommerce.Application.Common.OutBox;
 using Ecommerce.Application.Products.Commands.UpdateProduct;
 using Ecommerce.Domain.Entities;
 using Ecommerce.Domain.Interfaces;
+using Ecommerce.Infrastructure.Messaging.Events;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
 using NSubstitute;

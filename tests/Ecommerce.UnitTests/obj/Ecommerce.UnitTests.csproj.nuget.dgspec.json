@@ -196,9 +196,17 @@
           "framework": "net9.0",
           "targetAlias": "net9.0",
           "dependencies": {
+            "EntityFramework": {
+              "target": "Package",
+              "version": "[6.5.2, )"
+            },
             "FluentAssertions": {
               "target": "Package",
               "version": "[8.11.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.0, )"
             },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",

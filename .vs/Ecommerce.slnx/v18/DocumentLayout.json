@@ -1,0 +1,74 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Andy\\Documents\\Prog\\aspnet\\Studies\\Ecommerce-CQRS\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{81CA56F2-0D6F-55EE-BB6F-C5FB584A6928}|tests\\Ecommerce.UnitTests\\Ecommerce.UnitTests.csproj|c:\\users\\andy\\documents\\prog\\aspnet\\studies\\ecommerce-cqrs\\tests\\ecommerce.unittests\\products\\updateproducthandlertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{81CA56F2-0D6F-55EE-BB6F-C5FB584A6928}|tests\\Ecommerce.UnitTests\\Ecommerce.UnitTests.csproj|solutionrelative:tests\\ecommerce.unittests\\products\\updateproducthandlertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3606858-6E83-6E41-72A8-03FEB43CEED8}|src\\Ecommerce.Api\\Ecommerce.Api.csproj|c:\\users\\andy\\documents\\prog\\aspnet\\studies\\ecommerce-cqrs\\src\\ecommerce.api\\middlewares\\globalexceptionhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F3606858-6E83-6E41-72A8-03FEB43CEED8}|src\\Ecommerce.Api\\Ecommerce.Api.csproj|solutionrelative:src\\ecommerce.api\\middlewares\\globalexceptionhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:3:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:4:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:5:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:6:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GlobalExceptionHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Andy\\Documents\\Prog\\aspnet\\Studies\\Ecommerce-CQRS\\src\\Ecommerce.API\\Middlewares\\GlobalExceptionHandler.cs",
+              "RelativeDocumentMoniker": "src\\Ecommerce.API\\Middlewares\\GlobalExceptionHandler.cs",
+              "ToolTip": "C:\\Users\\Andy\\Documents\\Prog\\aspnet\\Studies\\Ecommerce-CQRS\\src\\Ecommerce.API\\Middlewares\\GlobalExceptionHandler.cs",
+              "RelativeToolTip": "src\\Ecommerce.API\\Middlewares\\GlobalExceptionHandler.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwBsAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-30T05:47:21.083Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UpdateProductHandlerTests.cs",
+              "DocumentMoniker": "C:\\Users\\Andy\\Documents\\Prog\\aspnet\\Studies\\Ecommerce-CQRS\\tests\\Ecommerce.UnitTests\\Products\\UpdateProductHandlerTests.cs",
+              "RelativeDocumentMoniker": "tests\\Ecommerce.UnitTests\\Products\\UpdateProductHandlerTests.cs",
+              "ToolTip": "C:\\Users\\Andy\\Documents\\Prog\\aspnet\\Studies\\Ecommerce-CQRS\\tests\\Ecommerce.UnitTests\\Products\\UpdateProductHandlerTests.cs",
+              "RelativeToolTip": "tests\\Ecommerce.UnitTests\\Products\\UpdateProductHandlerTests.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAkwAYAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-30T05:44:41.702Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

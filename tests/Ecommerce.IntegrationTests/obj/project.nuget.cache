@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "0Mw8PkYchIY=",
+  "dgSpecHash": "ZQVkqOllVJc=",
   "success": true,
   "projectFilePath": "C:\\Users\\Andy\\Documents\\Prog\\aspnet\\Studies\\Ecommerce-CQRS\\tests\\Ecommerce.IntegrationTests\\Ecommerce.IntegrationTests.csproj",
   "expectedPackageFiles": [
@@ -89,8 +89,6 @@
     "C:\\Users\\Andy\\.nuget\\packages\\mongodb.driver\\3.12.0\\mongodb.driver.3.12.0.nupkg.sha512",
     "C:\\Users\\Andy\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\Andy\\.nuget\\packages\\pipelines.sockets.unofficial\\2.2.8\\pipelines.sockets.unofficial.2.2.8.nupkg.sha512",
-    "C:\\Users\\Andy\\.nuget\\packages\\polly\\8.8.0\\polly.8.8.0.nupkg.sha512",
-    "C:\\Users\\Andy\\.nuget\\packages\\polly.core\\8.8.0\\polly.core.8.8.0.nupkg.sha512",
     "C:\\Users\\Andy\\.nuget\\packages\\rabbitmq.client\\7.1.2\\rabbitmq.client.7.1.2.nupkg.sha512",
     "C:\\Users\\Andy\\.nuget\\packages\\scalar.aspnetcore\\2.17.13\\scalar.aspnetcore.2.17.13.nupkg.sha512",
     "C:\\Users\\Andy\\.nuget\\packages\\sharpcompress\\0.48.1\\sharpcompress.0.48.1.nupkg.sha512",

@@ -1,6 +1,4 @@
-using Ecommerce.Application.Common.Interfaces;
 using Ecommerce.Application.Common.OutBox;
-using Ecommerce.Application.Dtos;
 using Ecommerce.Domain.Entities;
 using Ecommerce.Domain.Interfaces;
 using Microsoft.AspNetCore.Hosting;
@@ -98,7 +96,7 @@ public sealed class EcommerceWebApplicationFactory : WebApplicationFactory<Progr
             return Task.FromResult(_products.TryRemove(id, out _));
         }
 
-        public Task<(IEnumerable<ProductReadModel> items, long totalCount)> GetAllAsync(
+        public Task<(IEnumerable<Product> items, long totalCount)> GetAllAsync(
             int pageNumber,
             int pageSize,
             CancellationToken cancellationToken)
@@ -107,16 +105,15 @@ public sealed class EcommerceWebApplicationFactory : WebApplicationFactory<Progr
                 .OrderBy(product => product.Name)
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
-                .Select(ToReadModel)
                 .ToArray();
 
-            return Task.FromResult(((IEnumerable<ProductReadModel>)items, (long)_products.Count));
+            return Task.FromResult(((IEnumerable<Product>)items, (long)_products.Count));
         }
 
-        public Task<ProductReadModel?> GetByIdAsync(Guid id, CancellationToken cancellationToken)
+        public Task<Product?> GetByIdAsync(Guid id, CancellationToken cancellationToken)
         {
-            var result = _products.TryGetValue(id, out var product) ? ToReadModel(product) : null;
-            return Task.FromResult(result);
+            _products.TryGetValue(id, out var product);
+            return Task.FromResult(product);
         }
 
         public Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
@@ -128,16 +125,5 @@ public sealed class EcommerceWebApplicationFactory : WebApplicationFactory<Progr
             CancellationToken cancellationToken) where TEvent : class
             => Task.CompletedTask;
 
-        private static ProductReadModel ToReadModel(Product product) => new()
-        {
-            Id = product.Id,
-            Name = product.Name,
-            Description = product.Description,
-            Price = product.Price,
-            Stock = product.Stock,
-            CreatedAt = product.CreatedAt,
-            UpdatedAt = product.UpdatedAt,
-            Version = product.Version
-        };
     }
 }

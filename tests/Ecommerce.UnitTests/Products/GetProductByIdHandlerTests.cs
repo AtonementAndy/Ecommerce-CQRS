@@ -1,8 +1,8 @@
-using Ecommerce.Application.Common.Interfaces;
-using Ecommerce.Application.Dtos;
 using Ecommerce.Application.Products.Queries.GetProductById;
-using Microsoft.Extensions.DependencyInjection;
+using Ecommerce.Domain.Entities;
+using Ecommerce.Domain.Interfaces;
 using MediatR;
+using Microsoft.Extensions.DependencyInjection;
 using NSubstitute;
 
 namespace Ecommerce.UnitTests.Products;
@@ -14,17 +14,9 @@ public class GetProductByIdHandlerTests
     {
         var id = Guid.NewGuid();
         var repository = Substitute.For<IProductReadRepository>();
+        var createdAt = DateTime.UtcNow;
         repository.GetByIdAsync(id, Arg.Any<CancellationToken>())
-            .Returns(new ProductReadModel
-            {
-                Id = id,
-                Name = "Notebook",
-                Description = "Portable computer",
-                Price = 2999.99m,
-                Stock = 4,
-                CreatedAt = DateTime.UtcNow,
-                Version = 1
-            });
+            .Returns(new Product(id, "Notebook", "Portable computer", 2999.99m, 4, createdAt, createdAt, 1));
         var services = new ServiceCollection();
         services.AddLogging();
         services.AddMediatR(configuration =>
@@ -49,7 +41,7 @@ public class GetProductByIdHandlerTests
         var repository = Substitute.For<IProductReadRepository>();
         var id = Guid.NewGuid();
         repository.GetByIdAsync(id, Arg.Any<CancellationToken>())
-            .Returns((ProductReadModel?)null);
+            .Returns((Product?)null);
         var services = new ServiceCollection();
         services.AddLogging();
         services.AddMediatR(configuration =>

@@ -3,7 +3,6 @@
 namespace Ecommerce.Application.Common.Events
 {
     public record ProductCreatedEvent(
-        [property: BsonId]
         Guid Id,
         [Required] string Name,
         [Required] string Description,

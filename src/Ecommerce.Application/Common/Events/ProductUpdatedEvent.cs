@@ -3,7 +3,6 @@
 namespace Ecommerce.Infrastructure.Messaging.Events
 {
     public record ProductUpdatedEvent(
-        [property: BsonId]
         Guid Id,
         [Required] string Name,
         [Required] string Description,

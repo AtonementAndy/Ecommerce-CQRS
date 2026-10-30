@@ -29,3 +29,9 @@ C:\Users\Andy\Documents\Prog\aspnet\Studies\Ecommerce-CQRS\src\Ecommerce.Applica
 C:\Users\Andy\Documents\Prog\aspnet\Studies\Ecommerce-CQRS\src\Ecommerce.Application\obj\Debug\net9.0\refint\Ecommerce.Application.dll
 C:\Users\Andy\Documents\Prog\aspnet\Studies\Ecommerce-CQRS\src\Ecommerce.Application\obj\Debug\net9.0\Ecommerce.Application.pdb
 C:\Users\Andy\Documents\Prog\aspnet\Studies\Ecommerce-CQRS\src\Ecommerce.Application\obj\Debug\net9.0\ref\Ecommerce.Application.dll
+C:\Users\Andy\AppData\Local\Temp\Ecommerce-CQRS-diagnosis\Ecommerce.Application.deps.json
+C:\Users\Andy\AppData\Local\Temp\Ecommerce-CQRS-diagnosis\Ecommerce.Application.dll
+C:\Users\Andy\AppData\Local\Temp\Ecommerce-CQRS-diagnosis\Ecommerce.Application.pdb
+C:\Users\Andy\AppData\Local\Temp\Ecommerce-CQRS-validation\bin\Debug\net9.0\Ecommerce.Application.deps.json
+C:\Users\Andy\AppData\Local\Temp\Ecommerce-CQRS-validation\bin\Debug\net9.0\Ecommerce.Application.dll
+C:\Users\Andy\AppData\Local\Temp\Ecommerce-CQRS-validation\bin\Debug\net9.0\Ecommerce.Application.pdb

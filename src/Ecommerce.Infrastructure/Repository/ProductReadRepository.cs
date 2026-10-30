@@ -1,18 +1,13 @@
 ﻿using Ecommerce.Application.Dtos;
-<<<<<<< HEAD
-using Ecommerce.Application.Common.Interfaces;
-=======
 using Ecommerce.Domain.Entities;
-using Ecommerce.Domain.Interfaces;
 using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
->>>>>>> parent of b2107b2 (modifications)
-using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
-
+using Microsoft.Extensions.Configuration;
+using Ecommerce.Domain.Interfaces;
 namespace Ecommerce.Infrastructure.Repository
 {
-    internal class ProductReadRepository : IProductReadRepository
+    public class ProductReadRepository : IProductReadRepository
     {
         private readonly IMongoCollection<ProductReadModel> _mongoCollection;
 

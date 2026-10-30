@@ -37,7 +37,7 @@
     ".NETCoreApp,Version=v9.0": {
       "Ecommerce.IntegrationTests/1.0.0": {
         "dependencies": {
-          "Ecommerce.API": "1.0.0",
+          "Ecommerce.Api": "1.0.0",
           "Ecommerce.Infrastructure": "1.0.0",
           "Microsoft.AspNetCore.Mvc.Testing": "9.0.14",
           "Microsoft.NET.Test.Sdk": "17.12.0",
@@ -2124,7 +2124,7 @@
           "lib/net7.0/ZstdSharp.dll": {}
         }
       },
-      "Ecommerce.API/1.0.0": {
+      "Ecommerce.Api/1.0.0": {
         "dependencies": {
           "Ecommerce.Application": "1.0.0",
           "Ecommerce.Infrastructure": "1.0.0",
@@ -2136,24 +2136,21 @@
           "Scalar.AspNetCore": "2.17.13"
         },
         "runtime": {
-          "Ecommerce.API.dll": {
+          "Ecommerce.Api.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
         },
         "compile": {
-          "Ecommerce.API.dll": {}
+          "Ecommerce.Api.dll": {}
         }
       },
       "Ecommerce.Application/1.0.0": {
         "dependencies": {
           "Ecommerce.Domain": "1.0.0",
           "FluentValidation": "11.10.0",
-          "MassTransit": "8.4.1",
           "MediatR": "14.2.0",
-          "Microsoft.EntityFrameworkCore": "9.0.0",
-          "Microsoft.Extensions.Caching.Abstractions": "10.0.12",
-          "MongoDB.Driver": "3.12.0"
+          "Microsoft.Extensions.Caching.Abstractions": "10.0.12"
         },
         "runtime": {
           "Ecommerce.Application.dll": {
@@ -4835,7 +4832,7 @@
       "path": "zstdsharp.port/0.7.3",
       "hashPath": "zstdsharp.port.0.7.3.nupkg.sha512"
     },
-    "Ecommerce.API/1.0.0": {
+    "Ecommerce.Api/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

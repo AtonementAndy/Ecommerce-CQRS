@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "V3gleBWjj8A=",
+  "dgSpecHash": "epWjxCtpfSg=",
   "success": true,
   "projectFilePath": "C:\\Users\\Andy\\Documents\\Prog\\aspnet\\Studies\\Ecommerce-CQRS\\src\\Ecommerce.Api\\Ecommerce.Api.csproj",
   "expectedPackageFiles": [
@@ -67,8 +67,6 @@
     "C:\\Users\\Andy\\.nuget\\packages\\mongodb.driver\\3.12.0\\mongodb.driver.3.12.0.nupkg.sha512",
     "C:\\Users\\Andy\\.nuget\\packages\\mono.texttemplating\\3.0.0\\mono.texttemplating.3.0.0.nupkg.sha512",
     "C:\\Users\\Andy\\.nuget\\packages\\pipelines.sockets.unofficial\\2.2.8\\pipelines.sockets.unofficial.2.2.8.nupkg.sha512",
-    "C:\\Users\\Andy\\.nuget\\packages\\polly\\8.8.0\\polly.8.8.0.nupkg.sha512",
-    "C:\\Users\\Andy\\.nuget\\packages\\polly.core\\8.8.0\\polly.core.8.8.0.nupkg.sha512",
     "C:\\Users\\Andy\\.nuget\\packages\\rabbitmq.client\\7.1.2\\rabbitmq.client.7.1.2.nupkg.sha512",
     "C:\\Users\\Andy\\.nuget\\packages\\scalar.aspnetcore\\2.17.13\\scalar.aspnetcore.2.17.13.nupkg.sha512",
     "C:\\Users\\Andy\\.nuget\\packages\\sharpcompress\\0.48.1\\sharpcompress.0.48.1.nupkg.sha512",
@@ -110,15 +108,5 @@
     "C:\\Users\\Andy\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
     "C:\\Users\\Andy\\.nuget\\packages\\zstdsharp.port\\0.7.3\\zstdsharp.port.0.7.3.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "message": "Problem reading the cache file C:\\Users\\Andy\\Documents\\Prog\\aspnet\\Studies\\Ecommerce-CQRS\\src\\Ecommerce.Api\\obj\\project.nuget.cache : '<' is an invalid start of a property name. Expected a '\"'. Path: $ | LineNumber: 2 | BytePositionInLine: 0.",
-      "projectPath": "C:\\Users\\Andy\\Documents\\Prog\\aspnet\\Studies\\Ecommerce-CQRS\\src\\Ecommerce.Api\\Ecommerce.Api.csproj",
-      "warningLevel": 1,
-      "filePath": "C:\\Users\\Andy\\Documents\\Prog\\aspnet\\Studies\\Ecommerce-CQRS\\src\\Ecommerce.Api\\Ecommerce.Api.csproj",
-      "targetGraphs": []
-    }
-  ]
+  "logs": []
 }
