@@ -1,10 +1,10 @@
-﻿using Ecommerce.Application.Dtos;
+﻿using MediatR;
+using Ecommerce.Application.Dtos;
 using Ecommerce.Application.Products.Commands.CreateProduct;
 using Ecommerce.Application.Products.Commands.DeleteProduct;
 using Ecommerce.Application.Products.Commands.UpdateProduct;
 using Ecommerce.Application.Products.Queries.GetAllProducts;
 using Ecommerce.Application.Products.Queries.GetProductById;
-using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,7 +16,7 @@ namespace Ecommerce.API.Controllers
     {
         [HttpGet]
         [AllowAnonymous]
-        [ProducesResponseType(typeof(IEnumerable<ProductDto>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(IEnumerable<ProductResponse>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAll([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 10, CancellationToken cancellationToken = default)
         {
             var products = await mediator.Send(new GetAllProductsQuery(pageNumber, pageSize), cancellationToken);
@@ -25,7 +25,7 @@ namespace Ecommerce.API.Controllers
 
         [HttpGet("{id:guid}")]
         [AllowAnonymous]
-        [ProducesResponseType(typeof(ProductDto), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ProductResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetById(Guid id, CancellationToken cancellationToken)
         {

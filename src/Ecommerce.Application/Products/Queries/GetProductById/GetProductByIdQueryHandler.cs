@@ -7,9 +7,9 @@ using System.Text.Json;
 
 namespace Ecommerce.Application.Products.Queries.GetProductById
 {
-    internal class GetProductByIdQueryHandler(IProductReadRepository repository, IDistributedCache cache) : IRequestHandler<GetProductByIdQuery, ProductDto?>
+    internal class GetProductByIdQueryHandler(IProductReadRepository repository, IDistributedCache cache) : IRequestHandler<GetProductByIdQuery, ProductResponse?>
     {
-        public async Task<ProductDto?> Handle(GetProductByIdQuery request, CancellationToken cancellationToken)
+        public async Task<ProductResponse?> Handle(GetProductByIdQuery request, CancellationToken cancellationToken)
         {
             var cacheKey = $"product:{request.Id}";
 
@@ -17,7 +17,7 @@ namespace Ecommerce.Application.Products.Queries.GetProductById
             var cachedProduct = await cache.GetStringAsync(cacheKey, cancellationToken);
             if (!string.IsNullOrEmpty(cachedProduct))
             {
-                return JsonSerializer.Deserialize<ProductDto>(cachedProduct);
+                return JsonSerializer.Deserialize<ProductResponse>(cachedProduct);
             }
 
             // 2. Se NÃO está no Redis (Cache Miss), busca no MONGODB (Sem passar pelo SQL Server!)
@@ -36,7 +36,7 @@ namespace Ecommerce.Application.Products.Queries.GetProductById
             if (product is null)
                 return null;
 
-            var productDto = new ProductDto(
+            var productDto = new ProductResponse(
                 product.Id,
                 product.Name,
                 product.Description,

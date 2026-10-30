@@ -3,7 +3,6 @@ using Ecommerce.Application.Common.OutBox;
 using Ecommerce.Domain.Entities;
 using Ecommerce.Domain.Interfaces;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 
 namespace Ecommerce.Application.Products.Commands.CreateProduct
 {
@@ -35,14 +34,7 @@ namespace Ecommerce.Application.Products.Commands.CreateProduct
 
             await outboxWriter.EnqueueAsync("Product", eventMessage, cancellationToken);
 
-            try
-            {
-                await unitOfWork.SaveChangesAsync(cancellationToken);
-            }
-            catch (DbUpdateException ex) when (ex.InnerException?.Message.Contains("IX_Products_Name") == true)
-            {
-                throw new InvalidOperationException($"There is already a registered product with the name '{request.Name}'.");
-            }
+            await unitOfWork.SaveChangesAsync(cancellationToken);
 
             return product.Id;
         }

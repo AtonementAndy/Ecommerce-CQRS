@@ -1,8 +1,9 @@
 ﻿using Ecommerce.Application.Common.OutBox;
 using Ecommerce.Domain.Interfaces;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 using Ecommerce.Application.Common.Events;
+using Ecommerce.Application.Common.Exceptions;
+using Ecommerce.Domain.Entities;
 
 namespace Ecommerce.Application.Products.Commands.UpdateProduct
 {
@@ -22,7 +23,7 @@ namespace Ecommerce.Application.Products.Commands.UpdateProduct
                 request.Stock,
                 request.ExpectedVersion,
                 cancellationToken
-            ) ?? throw new KeyNotFoundException($"Product with ID {request.Id} not found.");
+            ) ?? throw new NotFoundException(nameof(Product), request.Id);
 
             var eventMessage = new ProductUpdatedEvent(
                 product.Id,
@@ -32,20 +33,11 @@ namespace Ecommerce.Application.Products.Commands.UpdateProduct
                 product.Stock,
                 product.UpdatedAt,
                 product.Version
-
             );
 
             await outboxWriter.EnqueueAsync("Product", eventMessage, cancellationToken);
 
-            try
-            {
-                await unitOfWork.SaveChangesAsync(cancellationToken);
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                throw new InvalidOperationException(
-                    $"The product with ID {request.Id} was modified by another user. Please refresh and try again.");
-            }
+            await unitOfWork.SaveChangesAsync(cancellationToken);
 
             return Unit.Value;
         }

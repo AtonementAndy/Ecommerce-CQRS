@@ -1,7 +1,5 @@
 ﻿using Ecommerce.Application.Dtos;
 using Ecommerce.Application.Common.Interfaces;
-using Microsoft.CodeAnalysis;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
 

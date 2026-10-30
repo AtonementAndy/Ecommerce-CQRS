@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Ecommerce.Application.Products.Queries.GetAllProducts
 {
-    public class GetAllProductsQuery(int pageNumber, int pageSize) : IRequest<IEnumerable<ProductDto>>
+    public class GetAllProductsQuery(int pageNumber, int pageSize) : IRequest<IEnumerable<ProductResponse>>
     {
         public int PageNumber { get; set; } = pageNumber;
         public int PageSize { get; set; } = pageSize;

@@ -1,7 +1,5 @@
-﻿using Ecommerce.Application.Common.Cache;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Caching.Distributed;
 
 namespace Ecommerce.API.Middlewares
 {

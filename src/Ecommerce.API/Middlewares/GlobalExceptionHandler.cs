@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using ValidationException = Ecommerce.Application.Common.Exceptions.ValidationException;
 
 namespace Ecommerce.API.Middlewares
 {
@@ -16,6 +17,8 @@ namespace Ecommerce.API.Middlewares
             {
                 DbUpdateConcurrencyException => (409, "Conflict",
                     "The resource was modified by another user. Please reload and try again."),
+                ValidationException validationException => (400, "Validation Failed",
+                    string.Join("; ", validationException.Errors.Select(error => error.ErrorMessage))),
                 NotFoundException => (404, "Resource Not Found", exception.Message),
                 InvalidOperationException => (400, "Bad Request", exception.Message),
                 _ => (500, "Internal Server Error", "An unexpected error occurred.")

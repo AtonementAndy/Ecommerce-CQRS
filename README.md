@@ -53,17 +53,19 @@ cd Ecommerce-CQRS
 ```
 
 
-Configure as strings de conexão e chaves JWT no arquivo appsettings.json, localizado no projeto Ecommerce.API:
+Configure as strings de conexão no `appsettings.json` do projeto `Ecommerce.API`. A chave de assinatura JWT não deve ser salva no repositório; configure-a localmente com User Secrets:
+
+```
+dotnet user-secrets init --project src/Ecommerce.API
+dotnet user-secrets set "Jwt:Key" "<chave aleatória com pelo menos 32 bytes>" --project src/Ecommerce.API
+```
+
+Em outros ambientes, forneça o segredo por um gerenciador de segredos ou pela variável de ambiente `Jwt__Key`. A aplicação não inicia se a chave estiver ausente ou tiver menos de 32 bytes. Nunca reutilize uma chave que já tenha sido commitada ou compartilhada.
 
 ```"ConnectionStrings"
     "DefaultConnection": "Server=localhost,1433;Database=EcommerceDb;User Id=sa;Password=Your_Password123;TrustServerCertificate=True;Encrypt=Optional;",
     "MongoDb": "mongodb://localhost:27017",
     "Redis": "localhost:6379"
-
-  "JwtSettings": 
-    "Secret": "SUA_CHAVE_SECRETA_SUPER_SEGURA_E_LONGA_AQUI",
-    "Issuer": "Ecommerce.API",
-    "Audience": "shop-api"
 
 "MongoDbSettings": {
   "DatabaseName": "EcommerceDb",
@@ -71,6 +73,16 @@ Configure as strings de conexão e chaves JWT no arquivo appsettings.json, local
 ```
 
 # 🏃‍♂️ Como Rodar o Projeto
+
+## Testes
+
+Execute todos os testes unitários e de integração a partir da raiz:
+
+```
+dotnet test Ecommerce.slnx
+```
+
+Os testes de integração da API usam serviços isolados em memória; não precisam iniciar SQL Server, MongoDB, Redis ou RabbitMQ. A chave JWT usada nos testes é exclusiva e não deve ser reutilizada fora deles.
 
 1. Aplicar as Migrations do EF Core (SQL Server):
 Abra o terminal na raiz do projeto e execute:
@@ -93,39 +105,10 @@ https://localhost:7238/scalar/v1
 Autenticação e Perfis (Roles / Policies)
 Os endpoints de alteração e gerenciamento exigem tokens JWT válidos gerados com as claims correspondentes (CatalogManagement ou Admin para exclusões).
 
-# 🔑 Como Gerar um Token JWT para Testes
+# 🔑 Tokens JWT para Testes
 
-Como a API valida tokens JWT assinados com a chave secreta configurada no seu appsettings.json, você pode gerar um token de teste rapidamente através do site jwt.io:
-1. Acesse o site: [https://jwt.io/](https://jwt.io/)
-2. Configure o Header (Cabeçalho):
-```
-{
-  "alg": "HS256",
-  "typ": "JWT"
-}
-```
-3. Configure o Payload (Corpo com as permissões/Roles):
-   Para testar rotas de gerenciamento (CatalogManagement):
-```
-{
-  "sub": "1234567890",
-  "name": "Admin User",
-  "role": "Manager",
-  "permission": "catalog:write",
-  "iss": "Ecommerce.API",
-  "aud": "shop-api",
-  "exp": 2000000000
-}
-```
-Para testar rotas restritas de exclusão (AdminOnly):
-Mude o campo "role" para "Admin".
-
-4. Assine o Token:
-  Na parte inferior da caixa de assinatura (Verify Signature), cole a mesma chave secreta que está configurada no seu JwtSettings:Secret no arquivo appsettings.json.
-
-5. Copie e Use:
-  Copie o token gerado na caixa da esquerda (Encoded), vá até a interface do Scalar na sua API,
-  clique no botão de autorização (Bearer) e cole o token para conseguir disparar as requisições protegidas com sucesso!
-
-
+<<<<<<< HEAD
 Made with ❤️ by [AtonementAndy](https://github.com/AtonementAndy)
+=======
+A API valida tokens, mas não emite JWTs. Use tokens emitidos pelo provedor de identidade configurado para o ambiente. Para desenvolvimento, se gerar tokens manualmente, faça isso com uma ferramenta local e use somente uma chave de desenvolvimento; não cole uma chave real em sites de terceiros. O token precisa corresponder ao issuer e audience configurados e incluir as roles e permissões exigidas pelas policies (`Manager` ou `Admin` com `catalog:write` para gerenciamento; `Admin` para exclusão).
+>>>>>>> 12f36b1 (adding tests)

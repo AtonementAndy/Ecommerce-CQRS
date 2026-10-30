@@ -9,9 +9,9 @@ namespace Ecommerce.Application.Products.Queries.GetAllProducts
 {
     public class GetAllProductsQueryHandler(
         IDistributedCache cache, 
-        IProductReadRepository repository) : IRequestHandler<GetAllProductsQuery, IEnumerable<ProductDto>>
+        IProductReadRepository repository) : IRequestHandler<GetAllProductsQuery, IEnumerable<ProductResponse>>
     {
-        public async Task<IEnumerable<ProductDto>> Handle(GetAllProductsQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<ProductResponse>> Handle(GetAllProductsQuery request, CancellationToken cancellationToken)
         {
             var pageNumber = request.PageNumber < 1 ? 1 : request.PageNumber;
             var pageSize = request.PageSize < 1 ? 10 : request.PageSize;
@@ -24,14 +24,14 @@ namespace Ecommerce.Application.Products.Queries.GetAllProducts
             
             if (!string.IsNullOrEmpty(cachedProducts))
             {
-                var allCacheProducts = JsonSerializer.Deserialize<IEnumerable<ProductDto>>(cachedProducts);
+                var allCacheProducts = JsonSerializer.Deserialize<IEnumerable<ProductResponse>>(cachedProducts);
                 if (allCacheProducts != null) 
                     return allCacheProducts;
             }
 
             var (items, totalCount) = await repository.GetAllAsync(pageNumber, pageSize, cancellationToken);
             var productsDto = items.Select(p => 
-                new ProductDto(
+                new ProductResponse(
                     p.Id,
                     p.Name,
                     p.Description,

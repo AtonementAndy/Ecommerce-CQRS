@@ -1,6 +1,7 @@
-﻿using Ecommerce.Application.Common.Cache;
-using Ecommerce.Application.Common.Events;
+﻿using Ecommerce.Application.Common.Events;
+using Ecommerce.Application.Common.Exceptions;
 using Ecommerce.Application.Common.OutBox;
+using Ecommerce.Domain.Entities;
 using Ecommerce.Domain.Interfaces;
 using MediatR;
 
@@ -20,7 +21,7 @@ namespace Ecommerce.Application.Products.Commands.DeleteProduct
             );
 
             if (!deleted)
-                throw new KeyNotFoundException($"Product with ID {request.Id} not found.");
+                throw new NotFoundException(nameof(Product), request.Id);
 
             var eventMessage = new ProductDeletedEvent(
                 request.Id, 

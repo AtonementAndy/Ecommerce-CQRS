@@ -243,8 +243,6 @@ C:\Users\Andy\Documents\Prog\aspnet\Studies\Ecommerce-CQRS\src\Ecommerce.API\bin
 C:\Users\Andy\Documents\Prog\aspnet\Studies\Ecommerce-CQRS\src\Ecommerce.API\bin\Debug\net9.0\MongoDB.Driver.dll
 C:\Users\Andy\Documents\Prog\aspnet\Studies\Ecommerce-CQRS\src\Ecommerce.API\bin\Debug\net9.0\Mono.TextTemplating.dll
 C:\Users\Andy\Documents\Prog\aspnet\Studies\Ecommerce-CQRS\src\Ecommerce.API\bin\Debug\net9.0\Pipelines.Sockets.Unofficial.dll
-C:\Users\Andy\Documents\Prog\aspnet\Studies\Ecommerce-CQRS\src\Ecommerce.API\bin\Debug\net9.0\Polly.dll
-C:\Users\Andy\Documents\Prog\aspnet\Studies\Ecommerce-CQRS\src\Ecommerce.API\bin\Debug\net9.0\Polly.Core.dll
 C:\Users\Andy\Documents\Prog\aspnet\Studies\Ecommerce-CQRS\src\Ecommerce.API\bin\Debug\net9.0\RabbitMQ.Client.dll
 C:\Users\Andy\Documents\Prog\aspnet\Studies\Ecommerce-CQRS\src\Ecommerce.API\bin\Debug\net9.0\Scalar.AspNetCore.dll
 C:\Users\Andy\Documents\Prog\aspnet\Studies\Ecommerce-CQRS\src\Ecommerce.API\bin\Debug\net9.0\SharpCompress.dll

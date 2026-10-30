@@ -9,11 +9,17 @@ namespace Ecommerce.Infrastructure.Repository
         public async Task<Product> AddAsync(Product product, CancellationToken cancellationToken)
         {
             await context.Products.AddAsync(product, cancellationToken);
-
             return product;
         }
 
-        public async Task<Product?> UpdateAsync(Guid id, string name, string description, decimal price, int stock, int expextedVersion, CancellationToken cancellationToken)
+        public async Task<Product?> UpdateAsync(
+            Guid id, 
+            string name, 
+            string description, 
+            decimal price, 
+            int stock, 
+            int expextedVersion, 
+            CancellationToken cancellationToken)
         {
             var product = await context.Products.FindAsync([id], cancellationToken);
             if (product is null) return null;
