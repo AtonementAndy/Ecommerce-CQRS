@@ -30,7 +30,7 @@ public class DeletedProductConsumer(
             logger.LogInformation("[RabbitMQ] Read DB document removed (ID: {Id})", id);
         }
 
-        
+        // Invalida cache — não deixa Redis derrubar o consumer
         try
         {
             await CacheInvalidator.InvalidateProductCachesAsync(cache, id, ct);

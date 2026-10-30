@@ -1,9 +1,14 @@
 ﻿using Ecommerce.Application.Common.OutBox;
 using Ecommerce.Domain.Interfaces;
 using MediatR;
+<<<<<<< HEAD
 using Ecommerce.Application.Common.Events;
 using Ecommerce.Application.Common.Exceptions;
 using Ecommerce.Domain.Entities;
+=======
+using Microsoft.EntityFrameworkCore;
+using Ecommerce.Infrastructure.Messaging.Events;
+>>>>>>> parent of b2107b2 (modifications)
 
 namespace Ecommerce.Application.Products.Commands.UpdateProduct
 {

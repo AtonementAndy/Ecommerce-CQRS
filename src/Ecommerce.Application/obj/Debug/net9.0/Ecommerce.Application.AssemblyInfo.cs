@@ -13,7 +13,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Ecommerce.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
+<<<<<<< HEAD
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+357f0ab1cfbb4190066a4a63709f70b3a9eddc3f")]
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+12f36b13fcc5e7c29fadfd53517d8aaa7f63f4b1")]
+>>>>>>> af06129 (Merge and solving conflicts of git pull)
 [assembly: System.Reflection.AssemblyProductAttribute("Ecommerce.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Ecommerce.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

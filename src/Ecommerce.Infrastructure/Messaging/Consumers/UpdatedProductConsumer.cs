@@ -1,7 +1,7 @@
 ﻿using DnsClient.Internal;
 using Ecommerce.Application.Common.Cache;
 using Ecommerce.Application.Dtos;
-using Ecommerce.Application.Common.Events;
+using Ecommerce.Infrastructure.Messaging.Events;
 using MassTransit;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Logging;

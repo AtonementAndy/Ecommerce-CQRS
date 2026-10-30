@@ -1,4 +1,5 @@
 ﻿using Ecommerce.Application.Common.Events;
+using Ecommerce.Infrastructure.Messaging.Events;
 
 namespace Ecommerce.Application.Common.OutBox
 {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Ecommerce.Application.Common.Events
+namespace Ecommerce.Infrastructure.Messaging.Events
 {
     public record ProductUpdatedEvent(
         [property: BsonId]

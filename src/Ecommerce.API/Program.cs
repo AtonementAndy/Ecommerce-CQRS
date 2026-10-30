@@ -146,8 +146,8 @@ if (app.Environment.IsDevelopment())
 //app.UseCors("AllowReactApp");
 
 app.UseHttpsRedirection();
-app.UseAuthentication();
-app.UseAuthorization(); 
+app.UseAuthentication(); // <-- ESSENCIAL: Lê e valida o Token JWT!
+app.UseAuthorization(); // <-- Valida as Roles e Policies
 app.MapControllers();
 
 app.Run();

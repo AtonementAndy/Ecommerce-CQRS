@@ -80,9 +80,19 @@ namespace Ecommerce.API.Controllers
                 expectedVersion
             );
 
-            await mediator.Send(command, cancellationToken);
-
-            return NoContent();
+            try
+            {
+                await mediator.Send(command, cancellationToken);
+                return NoContent();
+            }
+            catch (KeyNotFoundException)
+            {
+                return NotFound();
+            }
+            catch (InvalidOperationException ex) when (ex.Message.Contains("modified by another user."))
+            {
+                return Conflict(new { Message = ex.Message });
+            }
         }
 
         [HttpDelete("{id}")]

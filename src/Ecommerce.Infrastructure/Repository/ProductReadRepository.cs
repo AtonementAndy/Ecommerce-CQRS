@@ -1,5 +1,12 @@
 ﻿using Ecommerce.Application.Dtos;
+<<<<<<< HEAD
 using Ecommerce.Application.Common.Interfaces;
+=======
+using Ecommerce.Domain.Entities;
+using Ecommerce.Domain.Interfaces;
+using Microsoft.CodeAnalysis;
+using Microsoft.EntityFrameworkCore;
+>>>>>>> parent of b2107b2 (modifications)
 using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
 
@@ -15,33 +22,50 @@ namespace Ecommerce.Infrastructure.Repository
             _mongoCollection = mongoDatabase.GetCollection<ProductReadModel>(collectionName);
         }
 
-        public async Task<ProductReadModel?> GetByIdAsync(Guid id, CancellationToken cancellationToken)
+        public async Task<Product?> GetByIdAsync(Guid id, CancellationToken cancellationToken)
         {
-            //var filter = Builders<ProductReadModel>.Filter.And(
-            //    Builders<ProductReadModel>.Filter.Eq(p => p.Id, id),
-            //    Builders<ProductReadModel>.Filter.Eq(p => p.IsDeleted, false)
-            //);
-            var filter = Builders<ProductReadModel>.Filter.Eq(p => p.Id, id);
+            var filter = Builders<ProductReadModel>.Filter.And(
+                Builders<ProductReadModel>.Filter.Eq(p => p.Id, id),
+                Builders<ProductReadModel>.Filter.Eq(p => p.IsDeleted, false)
+            );
                             
-            var doc = await _mongoCollection
-                .Find(filter)
-                .FirstOrDefaultAsync(cancellationToken);
+            var doc = await _mongoCollection.Find(filter).FirstOrDefaultAsync(cancellationToken);
 
             if (doc is null)
                 return null;
 
-            return doc;
+            return new Product(
+                doc.Id,
+                doc.Name,
+                doc.Description,
+                doc.Price,
+                doc.Stock,
+                doc.CreatedAt,
+                doc.UpdatedAt,
+                doc.Version
+            );
         }
-
-        public async Task<(IEnumerable<ProductReadModel> items, long totalCount)> GetAllAsync(int pageNumber, int pageSize, CancellationToken cancellationToken)
+        public async Task<(IEnumerable<Product> items, long totalCount)> GetAllAsync(int pageNumber, int pageSize, CancellationToken cancellationToken)
         {
             var filter = Builders<ProductReadModel>.Filter.Empty;
+
             var totalCount = await _mongoCollection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
 
-            var items = await _mongoCollection.Find(filter)
+            var docs = await _mongoCollection.Find(filter)
                 .Skip((pageNumber - 1) * pageSize)
                 .Limit(pageSize)
                 .ToListAsync(cancellationToken);
+
+            var items = docs.Select(doc => new Product(
+                doc.Id,
+                doc.Name,
+                doc.Description,
+                doc.Price,
+                doc.Stock,
+                doc.CreatedAt,
+                doc.UpdatedAt,
+                doc.Version
+            ));
 
             return (items, totalCount);
         }
