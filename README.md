@@ -1,32 +1,35 @@
 # 🚀 Ecommerce CQRS
 
-Um backend de e-commerce moderno, robusto e escalável de alta performance, construído com **.NET 9**, seguindo os princípios de **Clean Architecture**, **CQRS**, **Persistência Poliglota** (SQL Server + MongoDB), **Mensageria Assíncrona** (RabbitMQ + MassTransit), **Cache Distribuído** (Redis) e **Autenticação JWT com Policies**.
+A modern, robust and high-performance e-commerce backend built with **.NET 9**, following the principles of **Clean Architecture**, **CQRS**, **Polyglot Persistence** (SQL Server + MongoDB), **Asynchronous Messaging** (RabbitMQ + MassTransit), **Distributed Cache** (Redis) and **JWT Authentication with Policies**.
 
 ---
 
-## 🛠️ Tech Stack & Ferramentas
+## 🛠️ Tech Stack & Tools
 
-* **Linguagem & Framework:** C# 13, .NET 9, ASP.NET Core Web API
-* **Arquitetura:** Clean Architecture, CQRS (MediatR), Domain-Driven Design (DDD)
-* **Write Model (Banco Relacional):** SQL Server via Entity Framework Core 9 (Code-First & Migrations)
-* **Read Model (Banco Não-Relacional):** MongoDB (Sincronizado via Mensageria)
-* **Mensageria & Event-Driven:** MassTransit com RabbitMQ
-* **Cache & Invalidation:** Redis (StackExchangeRedis) com Cache-Aside Pattern
-* **Validação & Documentação:** FluentValidation, Scalar / OpenAPI (.NET 9 nativo)
-* **Segurança:** ASP.NET Core Identity / JWT Bearer com Policy-Based Authorization (`CatalogManagement`, `AdminOnly`)
+* **Language & Framework:** C# 13, .NET 9, ASP.NET Core Web API
+* **Architecture:** Clean Architecture, CQRS (MediatR), Domain-Driven Design (DDD)
+* **Write Model (Relational Database):** SQL Server via Entity Framework Core 9 (Code-First & Migrations)
+* **Read Model (Non-Relational Database):** MongoDB (synchronized via messaging)
+* **Messaging & Event-Driven:** MassTransit with RabbitMQ
+* **Cache & Invalidation:** Redis (StackExchangeRedis) with Cache-Aside Pattern
+* **Validation & Documentation:** FluentValidation, Scalar / OpenAPI (.NET 9 native)
+* **Security:** JWT Bearer with Policy-Based Authorization (`CatalogManagement`, `AdminOnly`)
 
 ---
 
+## 🐳 Infrastructure (Docker)
 
-# 🐳 Infraestrutura (Docker)
+The project depends on external services for messaging, cache and databases. To start everything quickly, use Docker.
 
-O projeto depende de serviços externos para mensageria, cache e bancos de dados. Para subir tudo rapidamente, utilize o Docker.
+### Pull and run the containers
 
-### 1. Baixar e Rodar os Containers
-Certifique-se de ter o Docker Desktop instalado e execute os comandos abaixo para puxar as imagens oficiais e iniciar os serviços:
+Make sure Docker Desktop is installed and run the following commands:
 
-## SQL Server (Write Database)
-```docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Your_Password123" -p 1433:1433 --name sqlserver -d [mcr.microsoft.com/mssql/server:2022-latest](https://mcr.microsoft.com/mssql/server:2022-latest)```
+**SQL Server (Write Database)**
+
+```bash
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Your_Password123" -p 1433:1433 --name sqlserver -d mcr.microsoft.com/mssql/server:2022-latest
+```
 
 ## MongoDB (Read Model Database)
 ```docker run -p 27017:27017 --name mongodb -d mongo:latest```
@@ -38,74 +41,67 @@ Certifique-se de ter o Docker Desktop instalado e execute os comandos abaixo par
 ```docker run -p 5672:5672 -p 15672:15672 --name rabbitmq -d rabbitmq:3-management```
 
 
-# ⚙️ Configuração do Ambiente
+# ⚙️ Environment Configuration
 
-1. Clone o repositório na sua máquina:
+1. Clone the repository:
 ```
 git clone [https://github.com/AtonementAndy/Ecommerce-CQRS.git](https://github.com/AtonementAndy/Ecommerce-CQRS.git)
 cd Ecommerce-CQRS
 ```
 
 
-Configure as strings de conexão no `appsettings.json` do projeto `Ecommerce.API`. A chave de assinatura JWT não deve ser salva no repositório; configure-a localmente com User Secrets:
-
+Configure secrets locally using User Secrets (never commit sensitive data): 
 ```
 dotnet user-secrets init --project src/Ecommerce.API
-dotnet user-secrets set "Jwt:Key" "<chave aleatória com pelo menos 32 bytes>" --project src/Ecommerce.API
+dotnet user-secrets set "Jwt:Key" "<random-key-with-at-least-32-characters>" --project src/Ecommerce.API
+dotnet user-secrets set "ConnectionStrings:SqlServer" "Server=localhost,1433;Database=EcommerceDb;User Id=sa;Password=Your_Password123;TrustServerCertificate=True;Encrypt=Optional;" --project src/Ecommerce.API
+dotnet user-secrets set "ConnectionStrings:RabbitMQ" "amqp://guest:guest@localhost:5672" --project src/Ecommerce.API
+dotnet user-secrets set "ConnectionStrings:MongoDb" "mongodb://root:example@localhost:27017" --project src/Ecommerce.API
 ```
 
-Em outros ambientes, forneça o segredo por um gerenciador de segredos ou pela variável de ambiente `Jwt__Key`. A aplicação não inicia se a chave estiver ausente ou tiver menos de 32 bytes. Nunca reutilize uma chave que já tenha sido commitada ou compartilhada.
+In other environments, provide the secrets through a secret manager or environment variables (Jwt__Key, ConnectionStrings__SqlServer, etc.). The application will not start if the JWT key is missing or shorter than 32 bytes.
 
-```"ConnectionStrings"
-    "DefaultConnection": "Server=localhost,1433;Database=EcommerceDb;User Id=sa;Password=Your_Password123;TrustServerCertificate=True;Encrypt=Optional;",
-    "MongoDb": "mongodb://localhost:27017",
-    "Redis": "localhost:6379"
-
-"MongoDbSettings": {
-  "DatabaseName": "EcommerceDb",
-  "CollectionName": "ProductsReadModel"
 ```
 
-# 🏃‍♂️ Como Rodar o Projeto
+# 🏃‍♂️ How to Run the Project
 
-## Testes
+## Tests
 
-Execute todos os testes unitários e de integração a partir da raiz:
+Run all unit and integration tests from the root:
 
 ```
 dotnet test Ecommerce.slnx
 ```
 
-Os testes de integração da API usam serviços isolados em memória; não precisam iniciar SQL Server, MongoDB, Redis ou RabbitMQ. A chave JWT usada nos testes é exclusiva e não deve ser reutilizada fora deles.
+API integration tests use in-memory services and do not require SQL Server, MongoDB, Redis or RabbitMQ to be running.
 
-1. Aplicar as Migrations do EF Core (SQL Server):
-Abra o terminal na raiz do projeto e execute:
+1. Apply EF Core migrations:
+Apply EF Core migrations:
 ```
 dotnet ef database update --project src/Ecommerce.Infrastructure --startup-project src/Ecommerce.API
 ```
 
-2. Executar a API:
+2. Run the API:
 ```
 dotnet run --project src/Ecommerce.API
 ```
 
-Acessar a Documentação (Scalar / OpenAPI):
-Com a aplicação rodando, abra o navegador e acesse a rota do Scalar configurada para testar os endpoints de catálogo, autenticação e gerenciamento de produtos.
-Obs.: Assim que o projeto rodar, pegue a porta do localhost e mude aqui: 
+## API Documentation (Scalar / OpenAPI)
+Once the application is running, open the browser and access the Scalar UI (replace the port if needed):
 ```
 https://localhost:7238/scalar/v1
 ```
 
-Autenticação e Perfis (Roles / Policies)
-Os endpoints de alteração e gerenciamento exigem tokens JWT válidos gerados com as claims correspondentes (CatalogManagement ou Admin para exclusões).
+Authentication and Policies (Roles / Policies)
+Modification and management endpoints require valid JWT tokens with the appropriate claims (CatalogManagement or AdminOnly).
 
-# 🔑 Tokens JWT para Testes
+# 🔑 JWT Tokens for Testing
+The API validates tokens but does not issue them. Use tokens issued by the configured identity provider.
+
+For local development, generate tokens with a local tool using only a development key. The token must match the configured Issuer and Audience and include the required roles and permissions (Manager or Admin with catalog:write for management; Admin for deletion).
 
 
 Made with ❤️ by [AtonementAndy](https://github.com/AtonementAndy)
-=======
-A API valida tokens, mas não emite JWTs. Use tokens emitidos pelo provedor de identidade configurado para o ambiente. Para desenvolvimento, se gerar tokens manualmente, faça isso com uma ferramenta local e use somente uma chave de desenvolvimento; não cole uma chave real em sites de terceiros. O token precisa corresponder ao issuer e audience configurados e incluir as roles e permissões exigidas pelas policies (`Manager` ou `Admin` com `catalog:write` para gerenciamento; `Admin` para exclusão).
-
 
 # Architecture Decisions
 
