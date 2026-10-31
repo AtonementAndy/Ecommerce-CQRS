@@ -13,6 +13,7 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
+using Serilog;
 
 namespace Ecommerce.Infrastructure.DependencyInjection
 {
@@ -100,6 +101,13 @@ namespace Ecommerce.Infrastructure.DependencyInjection
                     config.ConfigureEndpoints(context);
                 });
             });
+
+            Log.Logger = new LoggerConfiguration()
+                .WriteTo.Console()
+                .WriteTo.File("logs/ecommerce.log", rollingInterval: RollingInterval.Day)
+                .CreateLogger();
+
+            
 
             return services;
         }

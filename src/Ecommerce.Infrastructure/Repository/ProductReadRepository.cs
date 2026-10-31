@@ -40,6 +40,7 @@ namespace Ecommerce.Infrastructure.Repository
                 doc.Version
             );
         }
+
         public async Task<(IEnumerable<Product> items, long totalCount)> GetAllAsync(int pageNumber, int pageSize, CancellationToken cancellationToken)
         {
             var filter = Builders<ProductReadModel>.Filter.Empty;
@@ -52,15 +53,16 @@ namespace Ecommerce.Infrastructure.Repository
                 .ToListAsync(cancellationToken);
 
             var items = docs.Select(doc => new Product(
-                doc.Id,
-                doc.Name,
-                doc.Description,
-                doc.Price,
-                doc.Stock,
-                doc.CreatedAt,
-                doc.UpdatedAt,
-                doc.Version
-            ));
+                    doc.Id,
+                    doc.Name,
+                    doc.Description,
+                    doc.Price,
+                    doc.Stock,
+                    doc.CreatedAt,
+                    doc.UpdatedAt,
+                    doc.Version
+                )
+            );
 
             return (items, totalCount);
         }

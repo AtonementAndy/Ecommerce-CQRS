@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Scalar.AspNetCore;
+using Serilog;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -104,6 +105,10 @@ builder.Services.AddOpenApi(options =>
         return Task.CompletedTask;
     });
 });
+
+builder.Host.UseSerilog();
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
 
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();

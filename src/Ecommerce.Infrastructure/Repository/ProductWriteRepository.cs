@@ -42,7 +42,6 @@ namespace Ecommerce.Infrastructure.Repository
             if (product is null) return false;
 
             context.Entry(product).Property(p => p.Version).OriginalValue = expextedVersion;
-
             context.Products.Remove(product);
 
             return true;
