@@ -32,26 +32,32 @@ docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Your_Password123" -p 1433:14
 ```
 
 ## MongoDB (Read Model Database)
-```docker run -p 27017:27017 --name mongodb -d mongo:latest```
+```bash
+docker run -p 27017:27017 --name mongodb -d mongo:latest
+```
 
 ## Redis (Distributed Cache)
-```docker run -p 6379:6379 --name redis -d redis:latest```
+```bash
+docker run -p 6379:6379 --name redis -d redis:latest
+```
 
 ## RabbitMQ (Message Broker com Management UI)
-```docker run -p 5672:5672 -p 15672:15672 --name rabbitmq -d rabbitmq:3-management```
+```bash
+docker run -p 5672:5672 -p 15672:15672 --name rabbitmq -d rabbitmq:3-management
+```
 
 
 # ⚙️ Environment Configuration
 
 1. Clone the repository:
-```
+```bash
 git clone [https://github.com/AtonementAndy/Ecommerce-CQRS.git](https://github.com/AtonementAndy/Ecommerce-CQRS.git)
 cd Ecommerce-CQRS
 ```
 
 
 Configure secrets locally using User Secrets (never commit sensitive data): 
-```
+```bash
 dotnet user-secrets init --project src/Ecommerce.API
 dotnet user-secrets set "Jwt:Key" "<random-key-with-at-least-32-characters>" --project src/Ecommerce.API
 dotnet user-secrets set "ConnectionStrings:SqlServer" "Server=localhost,1433;Database=EcommerceDb;User Id=sa;Password=Your_Password123;TrustServerCertificate=True;Encrypt=Optional;" --project src/Ecommerce.API
@@ -59,6 +65,7 @@ dotnet user-secrets set "ConnectionStrings:RabbitMQ" "amqp://guest:guest@localho
 dotnet user-secrets set "ConnectionStrings:MongoDb" "mongodb://root:example@localhost:27017" --project src/Ecommerce.API
 ```
 
+```bash
 In other environments, provide the secrets through a secret manager or environment variables (Jwt__Key, ConnectionStrings__SqlServer, etc.). The application will not start if the JWT key is missing or shorter than 32 bytes.
 
 ```
@@ -69,7 +76,7 @@ In other environments, provide the secrets through a secret manager or environme
 
 Run all unit and integration tests from the root:
 
-```
+```bash
 dotnet test Ecommerce.slnx
 ```
 
@@ -77,18 +84,20 @@ API integration tests use in-memory services and do not require SQL Server, Mong
 
 1. Apply EF Core migrations:
 Apply EF Core migrations:
-```
+```bash
 dotnet ef database update --project src/Ecommerce.Infrastructure --startup-project src/Ecommerce.API
 ```
 
-2. Run the API:
-```
+3. Run the API:
+```bash
 dotnet run --project src/Ecommerce.API
 ```
 
+
 ## API Documentation (Scalar / OpenAPI)
 Once the application is running, open the browser and access the Scalar UI (replace the port if needed):
-```
+
+```bash
 https://localhost:7238/scalar/v1
 ```
 
@@ -101,8 +110,6 @@ The API validates tokens but does not issue them. Use tokens issued by the confi
 For local development, generate tokens with a local tool using only a development key. The token must match the configured Issuer and Audience and include the required roles and permissions (Manager or Admin with catalog:write for management; Admin for deletion).
 
 
-Made with ❤️ by [AtonementAndy](https://github.com/AtonementAndy)
-
 # Architecture Decisions
 
 ### Phase 0 – Foundation Cleanup
@@ -112,3 +119,6 @@ Made with ❤️ by [AtonementAndy](https://github.com/AtonementAndy)
 - Extracted JWT authentication setup into `AuthenticationExtensions`
 - Moved secrets (JWT key and connection strings) to User Secrets
 - Improved separation of concerns and production readiness of the foundation
+
+
+Made with ❤️ by [AtonementAndy](https://github.com/AtonementAndy)
