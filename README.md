@@ -109,8 +109,6 @@ A API valida tokens, mas não emite JWTs. Use tokens emitidos pelo provedor de i
 
 # Architecture Decisions
 
-## Architecture Improvements
-
 ### Phase 0 – Foundation Cleanup
 - Enforced Clean Architecture boundaries (Application no longer depends on EF Core, MongoDB or MassTransit)
 - Introduced semantic application exceptions (`NotFoundException`, `ConflictException`)
