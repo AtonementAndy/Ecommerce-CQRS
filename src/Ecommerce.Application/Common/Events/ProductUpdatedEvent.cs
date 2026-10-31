@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Ecommerce.Infrastructure.Messaging.Events
+namespace Ecommerce.Application.Common.Events
 {
     public record ProductUpdatedEvent(
         Guid Id,

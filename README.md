@@ -101,8 +101,20 @@ Os endpoints de alteração e gerenciamento exigem tokens JWT válidos gerados c
 
 # 🔑 Tokens JWT para Testes
 
-<<<<<<< HEAD
+
 Made with ❤️ by [AtonementAndy](https://github.com/AtonementAndy)
 =======
 A API valida tokens, mas não emite JWTs. Use tokens emitidos pelo provedor de identidade configurado para o ambiente. Para desenvolvimento, se gerar tokens manualmente, faça isso com uma ferramenta local e use somente uma chave de desenvolvimento; não cole uma chave real em sites de terceiros. O token precisa corresponder ao issuer e audience configurados e incluir as roles e permissões exigidas pelas policies (`Manager` ou `Admin` com `catalog:write` para gerenciamento; `Admin` para exclusão).
->>>>>>> 12f36b1 (adding tests)
+
+
+# Architecture Decisions
+
+## Architecture Improvements
+
+### Phase 0 – Foundation Cleanup
+- Enforced Clean Architecture boundaries (Application no longer depends on EF Core, MongoDB or MassTransit)
+- Introduced semantic application exceptions (`NotFoundException`, `ConflictException`)
+- Centralized exception-to-HTTP mapping in `GlobalExceptionHandler`
+- Extracted JWT authentication setup into `AuthenticationExtensions`
+- Moved secrets (JWT key and connection strings) to User Secrets
+- Improved separation of concerns and production readiness of the foundation
