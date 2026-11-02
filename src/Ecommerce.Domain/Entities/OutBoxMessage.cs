@@ -23,7 +23,7 @@ namespace Ecommerce.Domain.Entities
         {
             return new OutboxMessage
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.CreateVersion7(),
                 AggregateType = aggregateType,
                 EventType = eventType,
                 Payload = payload,

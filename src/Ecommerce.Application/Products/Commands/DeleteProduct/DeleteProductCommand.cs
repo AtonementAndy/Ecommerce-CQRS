@@ -1,6 +1,9 @@
 ﻿using MediatR;
 
-namespace Ecommerce.Application.Products.Commands.DeleteProduct
+namespace Ecommerce.Application.Commands.Products.DeleteProduct
 {
-    public record DeleteProductCommand(Guid Id, int Version) : IRequest<Unit>;
+    public record DeleteProductCommand(
+        Guid Id, 
+        int Version
+    ) : IRequest<Unit>;
 }

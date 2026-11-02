@@ -7,6 +7,7 @@ namespace Ecommerce.Infrastructure.Data
     {
         public DbSet<Product> Products { get; set; }
         public DbSet<OutboxMessage> Outbox { get; set; }
+        public DbSet<Cart> Carts { get; set; } 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -63,6 +64,7 @@ namespace Ecommerce.Infrastructure.Data
                 builder.Property(o => o.Error)
                     .HasMaxLength(2000);
             });
+            
         }
     }
 }

@@ -1,8 +1,8 @@
 ﻿using FluentValidation;
 
-namespace Ecommerce.Application.Products.Commands.DeleteProduct
+namespace Ecommerce.Application.Commands.Products.DeleteProduct
 {
-    public class DeleteProductValidation : AbstractValidator<DeleteProductCommand>
+    public sealed class DeleteProductValidation : AbstractValidator<DeleteProductCommand>
     {
         public DeleteProductValidation()
         {

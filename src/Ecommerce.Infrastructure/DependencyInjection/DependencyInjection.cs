@@ -1,4 +1,5 @@
-﻿using Ecommerce.Application.Common.OutBox;
+﻿using Ecommerce.Application.Commands.Products.CreateProduct;
+using Ecommerce.Application.Common.OutBox;
 using Ecommerce.Domain.Interfaces;
 using Ecommerce.Infrastructure.Data;
 using Ecommerce.Infrastructure.Messaging.Consumers;
@@ -77,7 +78,7 @@ namespace Ecommerce.Infrastructure.DependencyInjection
             // 3. MediatR
             services.AddMediatR(config =>
                 config.RegisterServicesFromAssemblies(
-                    typeof(Application.Products.Commands.CreateProduct.CreateProductCommand).Assembly));
+                    typeof(CreateProductCommand).Assembly));
 
             // 4. Redis Cache
             services.AddStackExchangeRedisCache(options =>

@@ -5,12 +5,12 @@ namespace Ecommerce.Domain.ValueObjects
     public readonly struct Quantity
     {
         public int Value { get; }
-        public Quantity(int value)
+        public Quantity(int amount)
         {
-            if (value <= 0)
-                throw new DomainException("Quantity must be greater than zero.");
+            if (amount < 0)
+                throw new DomainException("Quantity must be less than zero.");
 
-            Value = value;
+            Value = amount;
         }
 
         public static Quantity operator +(Quantity a, Quantity b)

@@ -1,5 +1,4 @@
 ﻿using Ecommerce.Domain.Exceptions;
-using System.Numerics;
 
 namespace Ecommerce.Domain.ValueObjects
 {
@@ -10,14 +9,14 @@ namespace Ecommerce.Domain.ValueObjects
 
         public Money(decimal amount, string currency = "BRL")
         {
-            if (amount <= 0) 
+            if (amount < 0) 
                 throw new DomainException("Price cannot be negative.");
 
             if (string.IsNullOrWhiteSpace(currency) || currency.Length != 3)
                 throw new DomainException("Invalid currency code.");
 
             Amount = amount;
-            Currency = currency;
+            Currency = currency.ToUpperInvariant();
         }
 
         public static Money operator *(Money money, int quantity)

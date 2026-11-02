@@ -5,9 +5,9 @@ using Ecommerce.Domain.Entities;
 using Ecommerce.Domain.Interfaces;
 using MediatR;
 
-namespace Ecommerce.Application.Products.Commands.DeleteProduct
+namespace Ecommerce.Application.Commands.Products.DeleteProduct
 {
-    public class DeleteProductCommandHandler(
+    public sealed class DeleteProductCommandHandler(
         IProductWriteRepository repository, 
         IUnitOfWork unitOfWork,
         IOutboxWriter outboxWriter) : IRequestHandler<DeleteProductCommand, Unit>

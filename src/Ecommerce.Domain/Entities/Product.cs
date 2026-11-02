@@ -16,7 +16,7 @@
         public Product(string name, string description, decimal price, int stock)
         {
             //Id = id == Guid.Empty ? Guid.NewGuid() : id;
-            Id = Guid.NewGuid();
+            Id = Guid.CreateVersion7();
             Name = name;
             Description = description;
             Price = price;

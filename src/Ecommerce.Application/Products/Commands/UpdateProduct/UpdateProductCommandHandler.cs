@@ -5,9 +5,9 @@ using Ecommerce.Application.Common.Exceptions;
 using Ecommerce.Domain.Entities;
 using Ecommerce.Application.Common.Events;
 
-namespace Ecommerce.Application.Products.Commands.UpdateProduct
+namespace Ecommerce.Application.Commands.Products.UpdateProduct
 {
-    public class UpdateProductCommandHandler(
+    public sealed class UpdateProductCommandHandler(
         IProductWriteRepository repository,
         IUnitOfWork unitOfWork,
         IOutboxWriter outboxWriter

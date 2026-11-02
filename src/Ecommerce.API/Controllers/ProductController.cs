@@ -1,12 +1,12 @@
 ﻿using MediatR;
 using Ecommerce.Application.Dtos;
-using Ecommerce.Application.Products.Commands.CreateProduct;
 using Ecommerce.Application.Products.Commands.DeleteProduct;
 using Ecommerce.Application.Products.Commands.UpdateProduct;
 using Ecommerce.Application.Products.Queries.GetAllProducts;
 using Ecommerce.Application.Products.Queries.GetProductById;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Ecommerce.Application.Commands.Products.CreateProduct;
 
 namespace Ecommerce.API.Controllers
 {

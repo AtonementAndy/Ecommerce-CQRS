@@ -4,7 +4,7 @@ using Ecommerce.Domain.Entities;
 using Ecommerce.Domain.Interfaces;
 using MediatR;
 
-namespace Ecommerce.Application.Products.Commands.CreateProduct
+namespace Ecommerce.Application.Commands.Products.CreateProduct
 {
     public sealed class CreateProductCommandHandler(
         IProductWriteRepository repository,

@@ -1,7 +1,7 @@
 using Ecommerce.API.Auth;
 using Ecommerce.API.Filters;
 using Ecommerce.API.Middlewares;
-using Ecommerce.Application.Products.Commands.DeleteProduct;
+using Ecommerce.Application.Commands.Products.DeleteProduct;
 using Ecommerce.Infrastructure.Data;
 using Ecommerce.Infrastructure.DependencyInjection;
 using FluentValidation;

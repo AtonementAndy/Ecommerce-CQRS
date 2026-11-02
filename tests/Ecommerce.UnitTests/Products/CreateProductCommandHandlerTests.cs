@@ -1,5 +1,4 @@
 ﻿using Ecommerce.Application.Common.OutBox;
-using Ecommerce.Application.Products.Commands.CreateProduct;
 using Ecommerce.Application.Common.Events;
 using Ecommerce.Domain.Entities;
 using Ecommerce.Domain.Interfaces;
@@ -10,6 +9,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
+using Ecommerce.Application.Commands.Products.CreateProduct;
 
 namespace Ecommerce.UnitTests.Products
 {

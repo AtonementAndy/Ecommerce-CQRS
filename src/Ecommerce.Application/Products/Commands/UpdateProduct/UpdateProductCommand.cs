@@ -1,8 +1,8 @@
 ﻿using MediatR;
 
-namespace Ecommerce.Application.Products.Commands.UpdateProduct
+namespace Ecommerce.Application.Commands.Products.UpdateProduct
 {
-    public record UpdateProductCommand(
+    public sealed record UpdateProductCommand(
         Guid Id,
         string Name,
         string Description,
