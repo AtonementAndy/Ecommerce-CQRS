@@ -1,12 +1,12 @@
 ﻿using MediatR;
 using Ecommerce.Application.Dtos;
-using Ecommerce.Application.Products.Commands.DeleteProduct;
-using Ecommerce.Application.Products.Commands.UpdateProduct;
 using Ecommerce.Application.Products.Queries.GetAllProducts;
 using Ecommerce.Application.Products.Queries.GetProductById;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Ecommerce.Application.Commands.Products.CreateProduct;
+using Ecommerce.Application.Commands.Products.UpdateProduct;
+using Ecommerce.Application.Commands.Products.DeleteProduct;
 
 namespace Ecommerce.API.Controllers
 {
@@ -91,7 +91,7 @@ namespace Ecommerce.API.Controllers
             }
             catch (InvalidOperationException ex) when (ex.Message.Contains("modified by another user."))
             {
-                return Conflict(new { Message = ex.Message });
+                return Conflict(new { ex.Message });
             }
         }
 
