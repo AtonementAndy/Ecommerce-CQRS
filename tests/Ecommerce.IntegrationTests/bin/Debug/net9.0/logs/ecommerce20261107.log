@@ -1,0 +1,155 @@
+2026-11-07 12:02:47.074 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost/api/Product - application/json; charset=utf-8 null
+2026-11-07 12:02:47.162 -03:00 [WRN] Failed to determine the https port for redirect.
+2026-11-07 12:02:47.223 -03:00 [INF] Executing endpoint 'Ecommerce.API.Controllers.ProductController.Create (Ecommerce.Api)'
+2026-11-07 12:02:47.240 -03:00 [INF] Route matched with {action = "Create", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(Ecommerce.Application.Commands.Products.CreateProduct.CreateProductCommand, System.Threading.CancellationToken) on controller Ecommerce.API.Controllers.ProductController (Ecommerce.Api).
+2026-11-07 12:02:47.248 -03:00 [WRN] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2026-11-07 12:02:47.318 -03:00 [INF] Executing CreatedAtActionResult, writing value of type 'System.Guid'.
+2026-11-07 12:02:47.339 -03:00 [INF] Executed action Ecommerce.API.Controllers.ProductController.Create (Ecommerce.Api) in 95.73ms
+2026-11-07 12:02:47.347 -03:00 [INF] Executed endpoint 'Ecommerce.API.Controllers.ProductController.Create (Ecommerce.Api)'
+2026-11-07 12:02:47.350 -03:00 [INF] Request finished HTTP/1.1 POST http://localhost/api/Product - 201 null application/json; charset=utf-8 280.2849ms
+2026-11-07 12:02:47.359 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost/api/Product/01a1b688-970f-754e-be2b-4d3d352fe901 - null null
+2026-11-07 12:02:47.362 -03:00 [INF] Executing endpoint 'Ecommerce.API.Controllers.ProductController.GetById (Ecommerce.Api)'
+2026-11-07 12:02:47.367 -03:00 [INF] Route matched with {action = "GetById", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(System.Guid, System.Threading.CancellationToken) on controller Ecommerce.API.Controllers.ProductController (Ecommerce.Api).
+2026-11-07 12:02:47.384 -03:00 [INF] Executing OkObjectResult, writing value of type 'Ecommerce.Application.Dtos.ProductResponse'.
+2026-11-07 12:02:47.389 -03:00 [INF] Executed action Ecommerce.API.Controllers.ProductController.GetById (Ecommerce.Api) in 21.8678ms
+2026-11-07 12:02:47.389 -03:00 [INF] Executed endpoint 'Ecommerce.API.Controllers.ProductController.GetById (Ecommerce.Api)'
+2026-11-07 12:02:47.389 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost/api/Product/01a1b688-970f-754e-be2b-4d3d352fe901 - 200 null application/json; charset=utf-8 30.2881ms
+2026-11-07 12:02:47.394 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost/api/Product/01a1b688-970f-754e-be2b-4d3d352fe901 - null null
+2026-11-07 12:02:47.397 -03:00 [INF] Executing endpoint 'Ecommerce.API.Controllers.ProductController.GetById (Ecommerce.Api)'
+2026-11-07 12:02:47.397 -03:00 [INF] Route matched with {action = "GetById", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(System.Guid, System.Threading.CancellationToken) on controller Ecommerce.API.Controllers.ProductController (Ecommerce.Api).
+2026-11-07 12:02:47.402 -03:00 [INF] Executing StatusCodeResult, setting HTTP status code 304
+2026-11-07 12:02:47.402 -03:00 [INF] Executed action Ecommerce.API.Controllers.ProductController.GetById (Ecommerce.Api) in 4.6565ms
+2026-11-07 12:02:47.402 -03:00 [INF] Executed endpoint 'Ecommerce.API.Controllers.ProductController.GetById (Ecommerce.Api)'
+2026-11-07 12:02:47.402 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost/api/Product/01a1b688-970f-754e-be2b-4d3d352fe901 - 304 null null 8.0255ms
+2026-11-07 12:02:47.403 -03:00 [INF] Request starting HTTP/1.1 PUT http://localhost/api/Product/01a1b688-970f-754e-be2b-4d3d352fe901 - application/json; charset=utf-8 null
+2026-11-07 12:02:47.404 -03:00 [INF] Authorization failed. These requirements were not met:
+ClaimsAuthorizationRequirement:Claim.Type=permission and Claim.Value is one of the following values: (catalog:write)
+2026-11-07 12:02:47.406 -03:00 [INF] AuthenticationScheme: Bearer was forbidden.
+2026-11-07 12:02:47.406 -03:00 [INF] Request finished HTTP/1.1 PUT http://localhost/api/Product/01a1b688-970f-754e-be2b-4d3d352fe901 - 403 null null 2.8261ms
+2026-11-07 12:02:47.406 -03:00 [INF] Request starting HTTP/1.1 PUT http://localhost/api/Product/01a1b688-970f-754e-be2b-4d3d352fe901 - application/json; charset=utf-8 null
+2026-11-07 12:02:47.407 -03:00 [INF] Executing endpoint 'Ecommerce.API.Controllers.ProductController.Update (Ecommerce.Api)'
+2026-11-07 12:02:47.410 -03:00 [INF] Route matched with {action = "Update", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(System.Guid, Ecommerce.Application.Dtos.UpdateProductRequest, System.Threading.CancellationToken) on controller Ecommerce.API.Controllers.ProductController (Ecommerce.Api).
+2026-11-07 12:02:47.414 -03:00 [INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-11-07 12:02:47.416 -03:00 [INF] Executed action Ecommerce.API.Controllers.ProductController.Update (Ecommerce.Api) in 5.6497ms
+2026-11-07 12:02:47.416 -03:00 [INF] Executed endpoint 'Ecommerce.API.Controllers.ProductController.Update (Ecommerce.Api)'
+2026-11-07 12:02:47.416 -03:00 [INF] Request finished HTTP/1.1 PUT http://localhost/api/Product/01a1b688-970f-754e-be2b-4d3d352fe901 - 400 null application/json; charset=utf-8 9.9158ms
+2026-11-07 12:02:47.416 -03:00 [INF] Request starting HTTP/1.1 PUT http://localhost/api/Product/01a1b688-970f-754e-be2b-4d3d352fe901 - application/json; charset=utf-8 null
+2026-11-07 12:02:47.417 -03:00 [INF] Executing endpoint 'Ecommerce.API.Controllers.ProductController.Update (Ecommerce.Api)'
+2026-11-07 12:02:47.417 -03:00 [INF] Route matched with {action = "Update", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(System.Guid, Ecommerce.Application.Dtos.UpdateProductRequest, System.Threading.CancellationToken) on controller Ecommerce.API.Controllers.ProductController (Ecommerce.Api).
+2026-11-07 12:02:47.421 -03:00 [INF] Executing StatusCodeResult, setting HTTP status code 204
+2026-11-07 12:02:47.421 -03:00 [INF] Executed action Ecommerce.API.Controllers.ProductController.Update (Ecommerce.Api) in 4.2555ms
+2026-11-07 12:02:47.421 -03:00 [INF] Executed endpoint 'Ecommerce.API.Controllers.ProductController.Update (Ecommerce.Api)'
+2026-11-07 12:02:47.422 -03:00 [INF] Request finished HTTP/1.1 PUT http://localhost/api/Product/01a1b688-970f-754e-be2b-4d3d352fe901 - 204 null null 5.274ms
+2026-11-07 12:02:47.430 -03:00 [INF] Request starting HTTP/1.1 PUT http://localhost/api/Product/743e55c1-ecab-422d-8d0f-79d3a29b5971 - application/json; charset=utf-8 null
+2026-11-07 12:02:47.431 -03:00 [INF] Executing endpoint 'Ecommerce.API.Controllers.ProductController.Update (Ecommerce.Api)'
+2026-11-07 12:02:47.431 -03:00 [INF] Route matched with {action = "Update", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(System.Guid, Ecommerce.Application.Dtos.UpdateProductRequest, System.Threading.CancellationToken) on controller Ecommerce.API.Controllers.ProductController (Ecommerce.Api).
+2026-11-07 12:02:47.432 -03:00 [INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-11-07 12:02:47.432 -03:00 [INF] Executed action Ecommerce.API.Controllers.ProductController.Update (Ecommerce.Api) in 0.8414ms
+2026-11-07 12:02:47.432 -03:00 [INF] Executed endpoint 'Ecommerce.API.Controllers.ProductController.Update (Ecommerce.Api)'
+2026-11-07 12:02:47.432 -03:00 [INF] Request finished HTTP/1.1 PUT http://localhost/api/Product/743e55c1-ecab-422d-8d0f-79d3a29b5971 - 400 null application/json; charset=utf-8 1.9327ms
+2026-11-07 12:02:47.434 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost/api/Product - null null
+2026-11-07 12:02:47.435 -03:00 [INF] Executing endpoint 'Ecommerce.API.Controllers.ProductController.GetAll (Ecommerce.Api)'
+2026-11-07 12:02:47.438 -03:00 [INF] Route matched with {action = "GetAll", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(Int32, Int32, System.Threading.CancellationToken) on controller Ecommerce.API.Controllers.ProductController (Ecommerce.Api).
+2026-11-07 12:02:47.442 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Ecommerce.Application.Dtos.ProductResponse, Ecommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-11-07 12:02:47.447 -03:00 [INF] Executed action Ecommerce.API.Controllers.ProductController.GetAll (Ecommerce.Api) in 9.0751ms
+2026-11-07 12:02:47.447 -03:00 [INF] Executed endpoint 'Ecommerce.API.Controllers.ProductController.GetAll (Ecommerce.Api)'
+2026-11-07 12:02:47.447 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost/api/Product - 200 null application/json; charset=utf-8 13.0329ms
+2026-11-07 12:02:47.448 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost/api/Product - application/json; charset=utf-8 null
+2026-11-07 12:02:47.448 -03:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|Manager)
+ClaimsAuthorizationRequirement:Claim.Type=permission and Claim.Value is one of the following values: (catalog:write)
+2026-11-07 12:02:47.450 -03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2026-11-07 12:02:47.450 -03:00 [INF] Request finished HTTP/1.1 POST http://localhost/api/Product - 401 null null 2.4733ms
+2026-11-07 12:02:47.453 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost/api/Product - application/json; charset=utf-8 null
+2026-11-07 12:02:47.454 -03:00 [INF] Executing endpoint 'Ecommerce.API.Controllers.ProductController.Create (Ecommerce.Api)'
+2026-11-07 12:02:47.454 -03:00 [INF] Route matched with {action = "Create", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(Ecommerce.Application.Commands.Products.CreateProduct.CreateProductCommand, System.Threading.CancellationToken) on controller Ecommerce.API.Controllers.ProductController (Ecommerce.Api).
+2026-11-07 12:02:47.456 -03:00 [INF] Executing CreatedAtActionResult, writing value of type 'System.Guid'.
+2026-11-07 12:02:47.456 -03:00 [INF] Executed action Ecommerce.API.Controllers.ProductController.Create (Ecommerce.Api) in 2.5814ms
+2026-11-07 12:02:47.457 -03:00 [INF] Executed endpoint 'Ecommerce.API.Controllers.ProductController.Create (Ecommerce.Api)'
+2026-11-07 12:02:47.457 -03:00 [INF] Request finished HTTP/1.1 POST http://localhost/api/Product - 201 null application/json; charset=utf-8 3.705ms
+2026-11-07 12:02:47.457 -03:00 [INF] Request starting HTTP/1.1 DELETE http://localhost/api/Product/01a1b688-97a0-724c-a18c-32f04cbca5d3 - null null
+2026-11-07 12:02:47.458 -03:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2026-11-07 12:02:47.458 -03:00 [INF] AuthenticationScheme: Bearer was forbidden.
+2026-11-07 12:02:47.458 -03:00 [INF] Request finished HTTP/1.1 DELETE http://localhost/api/Product/01a1b688-97a0-724c-a18c-32f04cbca5d3 - 403 null null 0.781ms
+2026-11-07 12:02:47.459 -03:00 [INF] Request starting HTTP/1.1 DELETE http://localhost/api/Product/01a1b688-97a0-724c-a18c-32f04cbca5d3 - null null
+2026-11-07 12:02:47.459 -03:00 [INF] Executing endpoint 'Ecommerce.API.Controllers.ProductController.Delete (Ecommerce.Api)'
+2026-11-07 12:02:47.462 -03:00 [INF] Route matched with {action = "Delete", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Delete(System.Guid, System.Threading.CancellationToken) on controller Ecommerce.API.Controllers.ProductController (Ecommerce.Api).
+2026-11-07 12:02:47.464 -03:00 [INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-11-07 12:02:47.464 -03:00 [INF] Executed action Ecommerce.API.Controllers.ProductController.Delete (Ecommerce.Api) in 1.4513ms
+2026-11-07 12:02:47.464 -03:00 [INF] Executed endpoint 'Ecommerce.API.Controllers.ProductController.Delete (Ecommerce.Api)'
+2026-11-07 12:02:47.464 -03:00 [INF] Request finished HTTP/1.1 DELETE http://localhost/api/Product/01a1b688-97a0-724c-a18c-32f04cbca5d3 - 400 null application/json; charset=utf-8 5.4276ms
+2026-11-07 12:02:47.464 -03:00 [INF] Request starting HTTP/1.1 DELETE http://localhost/api/Product/01a1b688-97a0-724c-a18c-32f04cbca5d3 - null null
+2026-11-07 12:02:47.465 -03:00 [INF] Executing endpoint 'Ecommerce.API.Controllers.ProductController.Delete (Ecommerce.Api)'
+2026-11-07 12:02:47.465 -03:00 [INF] Route matched with {action = "Delete", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Delete(System.Guid, System.Threading.CancellationToken) on controller Ecommerce.API.Controllers.ProductController (Ecommerce.Api).
+2026-11-07 12:02:47.468 -03:00 [INF] Executing StatusCodeResult, setting HTTP status code 204
+2026-11-07 12:02:47.468 -03:00 [INF] Executed action Ecommerce.API.Controllers.ProductController.Delete (Ecommerce.Api) in 3.4051ms
+2026-11-07 12:02:47.468 -03:00 [INF] Executed endpoint 'Ecommerce.API.Controllers.ProductController.Delete (Ecommerce.Api)'
+2026-11-07 12:02:47.469 -03:00 [INF] Request finished HTTP/1.1 DELETE http://localhost/api/Product/01a1b688-97a0-724c-a18c-32f04cbca5d3 - 204 null null 4.3771ms
+2026-11-07 12:02:47.471 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost/api/Product - application/json; charset=utf-8 null
+2026-11-07 12:02:47.471 -03:00 [INF] Executing endpoint 'Ecommerce.API.Controllers.ProductController.Create (Ecommerce.Api)'
+2026-11-07 12:02:47.471 -03:00 [INF] Route matched with {action = "Create", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(Ecommerce.Application.Commands.Products.CreateProduct.CreateProductCommand, System.Threading.CancellationToken) on controller Ecommerce.API.Controllers.ProductController (Ecommerce.Api).
+2026-11-07 12:02:47.481 -03:00 [INF] Executed action Ecommerce.API.Controllers.ProductController.Create (Ecommerce.Api) in 9.2883ms
+2026-11-07 12:02:47.481 -03:00 [INF] Executed endpoint 'Ecommerce.API.Controllers.ProductController.Create (Ecommerce.Api)'
+2026-11-07 12:02:47.484 -03:00 [ERR] An unhandled exception has occurred while executing the request.
+FluentValidation.ValidationException: Validation failed: 
+ -- Name: Product name is required. Severity: Error
+ -- Price: Price must be greater than 0 Severity: Error
+   at Ecommerce.API.Filters.ValidationFilter.OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next) in C:\Users\Andy\Documents\Prog\aspnet\Studies\Ecommerce-CQRS\src\Ecommerce.Api\Filters\ValidationFilter.cs:line 23
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ExceptionContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2026-11-07 12:02:47.500 -03:00 [WRN] Business exception on /api/Product: Validation failed: 
+ -- Name: Product name is required. Severity: Error
+ -- Price: Price must be greater than 0 Severity: Error
+FluentValidation.ValidationException: Validation failed: 
+ -- Name: Product name is required. Severity: Error
+ -- Price: Price must be greater than 0 Severity: Error
+   at Ecommerce.API.Filters.ValidationFilter.OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next) in C:\Users\Andy\Documents\Prog\aspnet\Studies\Ecommerce-CQRS\src\Ecommerce.Api\Filters\ValidationFilter.cs:line 23
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ExceptionContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2026-11-07 12:02:47.515 -03:00 [INF] Request finished HTTP/1.1 POST http://localhost/api/Product - 400 null application/json; charset=utf-8 44.1478ms
+2026-11-07 12:02:47.517 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost/api/Product - application/json; charset=utf-8 null
+2026-11-07 12:02:47.518 -03:00 [INF] Authorization failed. These requirements were not met:
+ClaimsAuthorizationRequirement:Claim.Type=permission and Claim.Value is one of the following values: (catalog:write)
+2026-11-07 12:02:47.518 -03:00 [INF] AuthenticationScheme: Bearer was forbidden.
+2026-11-07 12:02:47.518 -03:00 [INF] Request finished HTTP/1.1 POST http://localhost/api/Product - 403 null null 0.7395ms
+2026-11-07 12:02:47.518 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost/api/Product - application/json; charset=utf-8 null
+2026-11-07 12:02:47.520 -03:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenInvalidAudienceException: IDX10214: Audience validation failed. See https://aka.ms/identitymodel/app-context-switches
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateAudience(IEnumerable`1 audiences, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2026-11-07 12:02:47.522 -03:00 [INF] Bearer was not authenticated. Failure message: IDX10214: Audience validation failed. See https://aka.ms/identitymodel/app-context-switches
+2026-11-07 12:02:47.522 -03:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|Manager)
+ClaimsAuthorizationRequirement:Claim.Type=permission and Claim.Value is one of the following values: (catalog:write)
+2026-11-07 12:02:47.523 -03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2026-11-07 12:02:47.523 -03:00 [INF] Request finished HTTP/1.1 POST http://localhost/api/Product - 401 null null 5.0102ms

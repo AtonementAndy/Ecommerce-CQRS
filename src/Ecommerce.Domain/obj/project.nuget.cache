@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "SdTcHOa3fuw=",
+  "dgSpecHash": "MHiiKcxpJl4=",
   "success": true,
   "projectFilePath": "C:\\Users\\Andy\\Documents\\Prog\\aspnet\\Studies\\Ecommerce-CQRS\\src\\Ecommerce.Domain\\Ecommerce.Domain.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Andy\\.nuget\\packages\\ulid\\1.4.1\\ulid.1.4.1.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -3,7 +3,7 @@
 namespace Ecommerce.Application.Commands.Products.UpdateProduct
 {
     public sealed record UpdateProductCommand(
-        Guid Id,
+        Ulid Id,
         string Name,
         string Description,
         decimal Price,

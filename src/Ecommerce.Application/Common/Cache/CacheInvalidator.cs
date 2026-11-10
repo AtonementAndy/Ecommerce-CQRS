@@ -6,7 +6,7 @@ namespace Ecommerce.Application.Common.Cache
     {
         public static async Task InvalidateProductCachesAsync(
             IDistributedCache cache,
-            Guid productId,
+            Ulid productId,
             CancellationToken cancellationToken
         )
         {

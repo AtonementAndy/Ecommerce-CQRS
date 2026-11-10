@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "0kq1zz12nbw=",
+  "dgSpecHash": "vYSW1GrspHc=",
   "success": true,
   "projectFilePath": "C:\\Users\\Andy\\Documents\\Prog\\aspnet\\Studies\\Ecommerce-CQRS\\tests\\Ecommerce.IntegrationTests\\Ecommerce.IntegrationTests.csproj",
   "expectedPackageFiles": [
@@ -135,6 +135,7 @@
     "C:\\Users\\Andy\\.nuget\\packages\\testcontainers.mongodb\\4.16.0\\testcontainers.mongodb.4.16.0.nupkg.sha512",
     "C:\\Users\\Andy\\.nuget\\packages\\testcontainers.mssql\\4.16.0\\testcontainers.mssql.4.16.0.nupkg.sha512",
     "C:\\Users\\Andy\\.nuget\\packages\\testcontainers.rabbitmq\\4.16.0\\testcontainers.rabbitmq.4.16.0.nupkg.sha512",
+    "C:\\Users\\Andy\\.nuget\\packages\\ulid\\1.4.1\\ulid.1.4.1.nupkg.sha512",
     "C:\\Users\\Andy\\.nuget\\packages\\xunit\\2.9.2\\xunit.2.9.2.nupkg.sha512",
     "C:\\Users\\Andy\\.nuget\\packages\\xunit.abstractions\\2.0.3\\xunit.abstractions.2.0.3.nupkg.sha512",
     "C:\\Users\\Andy\\.nuget\\packages\\xunit.analyzers\\1.16.0\\xunit.analyzers.1.16.0.nupkg.sha512",

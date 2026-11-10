@@ -1,6 +1,6 @@
+using Ecommerce.Application.Commands.Products.DeleteProduct;
 using Ecommerce.Application.Common.Events;
 using Ecommerce.Application.Common.OutBox;
-using Ecommerce.Application.Products.Commands.DeleteProduct;
 using Ecommerce.Domain.Interfaces;
 using FluentAssertions;
 using NSubstitute;

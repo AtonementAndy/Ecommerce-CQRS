@@ -2,7 +2,7 @@
 {
     public class Product
     {
-        public Guid Id { get; private set; }
+        public Ulid Id { get; private set; }
         public string Name { get; private set; } = string.Empty;
         public string Description { get; private set; } = string.Empty;
         public decimal Price { get; private set; }
@@ -15,8 +15,7 @@
 
         public Product(string name, string description, decimal price, int stock)
         {
-            //Id = id == Guid.Empty ? Guid.NewGuid() : id;
-            Id = Guid.CreateVersion7();
+            Id = Ulid.NewUlid();
             Name = name;
             Description = description;
             Price = price;
@@ -25,7 +24,7 @@
             Version = 1;
         }
 
-        public Product(Guid id, string name, string description, decimal price, int stock, DateTime createdAt, DateTime updatedAt, int version)
+        public Product(Ulid id, string name, string description, decimal price, int stock, DateTime createdAt, DateTime updatedAt, int version)
         {
             Id = id;
             Name = name;

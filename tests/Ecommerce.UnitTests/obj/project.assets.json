@@ -1040,6 +1040,19 @@
           }
         }
       },
+      "Ulid/1.4.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/Ulid.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Ulid.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "xunit/2.9.2": {
         "type": "package",
         "dependencies": {
@@ -1143,7 +1156,8 @@
           "Ecommerce.Domain": "1.0.0",
           "FluentValidation": "11.10.0",
           "MediatR": "14.2.0",
-          "Microsoft.Extensions.Caching.Abstractions": "10.0.12"
+          "Microsoft.Extensions.Caching.Abstractions": "10.0.12",
+          "Ulid": "1.4.1"
         },
         "compile": {
           "bin/placeholder/Ecommerce.Application.dll": {}
@@ -1155,6 +1169,9 @@
       "Ecommerce.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "Ulid": "1.4.1"
+        },
         "compile": {
           "bin/placeholder/Ecommerce.Domain.dll": {}
         },
@@ -2858,6 +2875,28 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "Ulid/1.4.1": {
+      "sha512": "V6crLJ8a29raWeNwxYGfH9RTKA3H0nR0D9LAGzN3KtEsbiiaWkUjDor6OT5Oz7pxCK+NaY2hu2FLoYEOa8oCkA==",
+      "type": "package",
+      "path": "ulid/1.4.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "lib/net6.0/Ulid.dll",
+        "lib/net6.0/Ulid.xml",
+        "lib/net7.0/Ulid.dll",
+        "lib/net7.0/Ulid.xml",
+        "lib/net8.0/Ulid.dll",
+        "lib/net8.0/Ulid.xml",
+        "lib/netstandard2.0/Ulid.dll",
+        "lib/netstandard2.0/Ulid.xml",
+        "lib/netstandard2.1/Ulid.dll",
+        "lib/netstandard2.1/Ulid.xml",
+        "ulid.1.4.1.nupkg.sha512",
+        "ulid.nuspec"
+      ]
+    },
     "xunit/2.9.2": {
       "sha512": "7LhFS2N9Z6Xgg8aE5lY95cneYivRMfRI8v+4PATa4S64D5Z/Plkg0qa8dTRHSiGRgVZ/CL2gEfJDE5AUhOX+2Q==",
       "type": "package",
@@ -3028,7 +3067,8 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Andy\\.nuget\\packages\\": {}
+    "C:\\Users\\Andy\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
@@ -3039,14 +3079,21 @@
       "packagesPath": "C:\\Users\\Andy\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Andy\\Documents\\Prog\\aspnet\\Studies\\Ecommerce-CQRS\\tests\\Ecommerce.UnitTests\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
         "C:\\Users\\Andy\\Documents\\Prog\\aspnet\\Studies\\Ecommerce-CQRS\\NuGet.Config",
-        "C:\\Users\\Andy\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Andy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

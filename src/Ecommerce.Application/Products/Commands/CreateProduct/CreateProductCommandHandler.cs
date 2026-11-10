@@ -9,9 +9,9 @@ namespace Ecommerce.Application.Commands.Products.CreateProduct
     public sealed class CreateProductCommandHandler(
         IProductWriteRepository repository,
         IOutboxWriter outboxWriter,
-        IUnitOfWork unitOfWork) : IRequestHandler<CreateProductCommand, Guid>
+        IUnitOfWork unitOfWork) : IRequestHandler<CreateProductCommand, Ulid>
     {
-        public async Task<Guid> Handle(CreateProductCommand request, CancellationToken cancellationToken)
+        public async Task<Ulid> Handle(CreateProductCommand request, CancellationToken cancellationToken)
         {
             var product = new Product(
                 request.Name,

@@ -67,7 +67,7 @@ public class CartController(ISender mediator) : ControllerBase
     [HttpDelete("items/{productId:guid}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> RemoveItem(Guid productId, CancellationToken cancellationToken)
+    public async Task<IActionResult> RemoveItem(Ulid productId, CancellationToken cancellationToken)
     {
         var userId = GetUserId();
         await mediator.Send(new RemoveItemFromCartCommand(userId, productId), cancellationToken);
@@ -87,13 +87,13 @@ public class CartController(ISender mediator) : ControllerBase
         return NoContent();
     }
 
-    private Guid GetUserId()
+    private Ulid GetUserId()
     {
         // Extrai o UserId do token JWT (claim "sub" ou "userId")
         var userIdClaim = User.FindFirst("sub")?.Value 
                        ?? User.FindFirst("userId")?.Value;
 
-        if (userIdClaim is null || !Guid.TryParse(userIdClaim, out var userId))
+        if (userIdClaim is null || !Ulid.TryParse(userIdClaim, out var userId))
             throw new UnauthorizedAccessException("UserId not found in token.");
 
         return userId;

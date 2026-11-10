@@ -9,6 +9,6 @@ namespace Ecommerce.Domain.Interfaces
             int pageSize, 
             CancellationToken cancellationToken
         );
-        Task<Product?> GetByIdAsync(Guid id, CancellationToken cancellationToken);
+        Task<Product?> GetByIdAsync(Ulid id, CancellationToken cancellationToken);
     }
 }

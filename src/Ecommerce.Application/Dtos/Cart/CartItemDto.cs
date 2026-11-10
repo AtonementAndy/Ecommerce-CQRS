@@ -1,7 +1,7 @@
 namespace Ecommerce.Application.Dtos.Cart
 {
     public sealed record CartItemDto(
-        Guid ProductId,
+        Ulid ProductId,
         string ProductName,
         decimal UnitPrice,
         int Quantity,

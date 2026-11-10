@@ -4,6 +4,6 @@ using MediatR;
 namespace Ecommerce.Application.Cart.Queries
 {
     public sealed record GetCartByUserIdQuery(
-        Guid UserId
+        Ulid UserId
     ) : IRequest<CartDto?>;
 }

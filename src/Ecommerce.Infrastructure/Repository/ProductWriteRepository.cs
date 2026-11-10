@@ -13,7 +13,7 @@ namespace Ecommerce.Infrastructure.Repository
         }
 
         public async Task<Product?> UpdateAsync(
-            Guid id, 
+            Ulid id, 
             string name, 
             string description, 
             decimal price, 
@@ -36,7 +36,7 @@ namespace Ecommerce.Infrastructure.Repository
             return product;
         }
 
-        public async Task<bool> DeleteAsync(Guid id, int expextedVersion, CancellationToken cancellationToken)
+        public async Task<bool> DeleteAsync(Ulid id, int expextedVersion, CancellationToken cancellationToken)
         {
             var product = await context.Products.FindAsync([id], cancellationToken);
             if (product is null) return false;

@@ -6,9 +6,9 @@ namespace Ecommerce.Application.Cart.Commands.CreateCart;
 
 public sealed class CreateCartCommandHandler(
     ICartWriteRepository cartRepository,
-    IUnitOfWork unitOfWork) : IRequestHandler<CreateCartCommand, Guid>
+    IUnitOfWork unitOfWork) : IRequestHandler<CreateCartCommand, Ulid>
 {
-    public async Task<Guid> Handle(CreateCartCommand request, CancellationToken cancellationToken)
+    public async Task<Ulid> Handle(CreateCartCommand request, CancellationToken cancellationToken)
     {
         var existingCart = await cartRepository.GetByUserIdAsync(request.UserId, cancellationToken);
 

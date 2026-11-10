@@ -1,7 +1,7 @@
 ﻿namespace Ecommerce.Application.Dtos
 {
     public record ProductResponse(
-         Guid Id,
+         Ulid Id,
          string Name,
          string Description,
          decimal Price,

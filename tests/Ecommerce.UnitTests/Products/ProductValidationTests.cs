@@ -1,5 +1,5 @@
-using Ecommerce.Application.Products.Commands.CreateProduct;
-using Ecommerce.Application.Products.Commands.UpdateProduct;
+using Ecommerce.Application.Commands.Products.CreateProduct;
+using Ecommerce.Application.Commands.Products.UpdateProduct;
 using FluentValidation.TestHelper;
 
 namespace Ecommerce.UnitTests.Products;

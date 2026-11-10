@@ -12,7 +12,7 @@ namespace Ecommerce.Infrastructure.Repository
             await context.Carts.AddAsync(cart, cancellationToken);
         }
 
-        public async Task<Cart?> GetByUserIdAsync(Guid userId, CancellationToken cancellationToken = default)
+        public async Task<Cart?> GetByUserIdAsync(Ulid userId, CancellationToken cancellationToken = default)
         {
             return await context.Carts
                 .Include(c => c.Items)

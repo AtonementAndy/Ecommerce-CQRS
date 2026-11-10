@@ -20,21 +20,9 @@ namespace Ecommerce.Application.Products.Queries.GetProductById
                 return JsonSerializer.Deserialize<ProductResponse>(cachedProduct);
             }
 
-            // 2. Se NÃO está no Redis (Cache Miss), busca no MONGODB (Sem passar pelo SQL Server!)
             var product = await repository.GetByIdAsync(request.Id, cancellationToken);
 
-            if (product != null)
-            {
-                await cache.SetStringAsync(
-                    cacheKey,
-                    JsonSerializer.Serialize(product),
-                    CacheOptions.DefaultExpiration,
-                    cancellationToken
-                );
-            }
-
-            if (product is null)
-                return null;
+            if (product is null) return null;
 
             var productDto = new ProductResponse(
                 product.Id,
@@ -45,6 +33,13 @@ namespace Ecommerce.Application.Products.Queries.GetProductById
                 product.CreatedAt,
                 product.UpdatedAt,
                 product.Version
+            );
+
+            await cache.SetStringAsync(
+                cacheKey,
+                JsonSerializer.Serialize(productDto),
+                CacheOptions.DefaultExpiration,
+                cancellationToken
             );
 
             return productDto;

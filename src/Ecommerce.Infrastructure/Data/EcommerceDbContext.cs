@@ -64,6 +64,11 @@ namespace Ecommerce.Infrastructure.Data
                 builder.Property(o => o.Error)
                     .HasMaxLength(2000);
             });
+
+            modelBuilder.Entity<Cart>(builder =>
+            {
+                builder.HasKey(c => c.UserId); 
+            });
             
         }
     }

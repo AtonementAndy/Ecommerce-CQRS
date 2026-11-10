@@ -27,7 +27,7 @@ namespace Ecommerce.API.Controllers
         [AllowAnonymous]
         [ProducesResponseType(typeof(ProductResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> GetById(Guid id, CancellationToken cancellationToken)
+        public async Task<IActionResult> GetById(Ulid id, CancellationToken cancellationToken)
         {
             var product = await mediator.Send(new GetProductByIdQuery(id), cancellationToken);
 
@@ -45,7 +45,7 @@ namespace Ecommerce.API.Controllers
 
         [HttpPost]
         [Authorize(Policy = "CatalogManagement")]
-        [ProducesResponseType(typeof(Guid), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(Ulid), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Create([FromBody] CreateProductCommand command, CancellationToken cancellationToken)
         {
@@ -60,7 +60,7 @@ namespace Ecommerce.API.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]
-        public async Task<IActionResult> Update(Guid id, [FromBody] UpdateProductRequest request, CancellationToken cancellationToken)
+        public async Task<IActionResult> Update(Ulid id, [FromBody] UpdateProductRequest request, CancellationToken cancellationToken)
         {
             var ifMatch = Request.Headers.IfMatch.ToString();
 
@@ -99,7 +99,7 @@ namespace Ecommerce.API.Controllers
         [Authorize(Policy = "AdminOnly")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> Delete(Guid id, CancellationToken cancellationToken)
+        public async Task<IActionResult> Delete(Ulid id, CancellationToken cancellationToken)
         {
             var ifMatch = Request.Headers.IfMatch.ToString();
 

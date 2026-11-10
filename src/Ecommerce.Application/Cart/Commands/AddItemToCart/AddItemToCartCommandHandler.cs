@@ -1,6 +1,7 @@
 using Ecommerce.Domain.Interfaces;
 using Ecommerce.Domain.ValueObjects;
 using MediatR;
+using DomainCart = Ecommerce.Domain.Entities.Cart;
 
 namespace Ecommerce.Application.Cart.Commands.AddItemToCart
 {
@@ -15,7 +16,7 @@ namespace Ecommerce.Application.Cart.Commands.AddItemToCart
 
             if (cart is null)
             {
-                cart = new Domain.Entities.Cart(request.UserId);   
+                cart = new DomainCart(request.UserId);   
                 await cartWriteRepository.AddAsync(cart, cancellationToken); 
             }
 

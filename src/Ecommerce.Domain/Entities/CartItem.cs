@@ -4,16 +4,16 @@ namespace Ecommerce.Domain.Entities
 {
     public class CartItem
     {
-        public Guid ProductId { get; private set; }
+        public Ulid ProductId { get; private set; }
         public string ProductName { get; private set; } = string.Empty;
         public Money UnitPrice { get; private set; }  
         public Quantity Quantity { get; private set; }
 
         private CartItem() { }
 
-        internal CartItem(Guid productId, string productName, Money unitPrice, Quantity quantity)
+        internal CartItem(Ulid productId, string productName, Money unitPrice, Quantity quantity)
         {
-            ProductId = productId;
+            ProductId = Ulid.NewUlid();
             ProductName = productName;
             UnitPrice = unitPrice;
             Quantity = quantity;

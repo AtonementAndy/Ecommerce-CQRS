@@ -10,7 +10,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Scalar.AspNetCore;
 using Serilog;
-using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 

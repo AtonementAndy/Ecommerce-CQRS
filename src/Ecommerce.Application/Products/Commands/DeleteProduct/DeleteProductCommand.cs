@@ -3,7 +3,7 @@
 namespace Ecommerce.Application.Commands.Products.DeleteProduct
 {
     public record DeleteProductCommand(
-        Guid Id, 
+        Ulid Id, 
         int Version
     ) : IRequest<Unit>;
 }

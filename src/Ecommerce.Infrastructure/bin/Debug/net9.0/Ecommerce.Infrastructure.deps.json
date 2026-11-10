@@ -20,7 +20,8 @@
           "Serilog.AspNetCore": "10.0.1-dev-02312",
           "Serilog.Extensions.Hosting": "10.0.0",
           "Serilog.Sinks.Console": "6.1.1",
-          "Serilog.Sinks.File": "8.0.0-nblumhardt-02322"
+          "Serilog.Sinks.File": "8.0.0-nblumhardt-02322",
+          "Ulid": "1.4.1"
         },
         "runtime": {
           "Ecommerce.Infrastructure.dll": {}
@@ -1290,6 +1291,14 @@
           }
         }
       },
+      "Ulid/1.4.1": {
+        "runtime": {
+          "lib/net8.0/Ulid.dll": {
+            "assemblyVersion": "1.4.1.0",
+            "fileVersion": "1.4.1.0"
+          }
+        }
+      },
       "ZstdSharp.Port/0.7.3": {
         "runtime": {
           "lib/net7.0/ZstdSharp.dll": {
@@ -1303,7 +1312,8 @@
           "Ecommerce.Domain": "1.0.0",
           "FluentValidation": "11.10.0",
           "MediatR": "14.2.0",
-          "Microsoft.Extensions.Caching.Abstractions": "10.0.12"
+          "Microsoft.Extensions.Caching.Abstractions": "10.0.12",
+          "Ulid": "1.4.1"
         },
         "runtime": {
           "Ecommerce.Application.dll": {
@@ -1313,6 +1323,9 @@
         }
       },
       "Ecommerce.Domain/1.0.0": {
+        "dependencies": {
+          "Ulid": "1.4.1"
+        },
         "runtime": {
           "Ecommerce.Domain.dll": {
             "assemblyVersion": "1.0.0.0",
@@ -1929,6 +1942,13 @@
       "sha512": "sha512-IXoJOXIqc39AIe+CIR7koBtRGMiCt/LPM3lI+PELtDIy9XdyeSrwXFdWV9dzJ2Awl0paLWUaknLxFQ5HpHZUog==",
       "path": "system.windows.extensions/6.0.0",
       "hashPath": "system.windows.extensions.6.0.0.nupkg.sha512"
+    },
+    "Ulid/1.4.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-V6crLJ8a29raWeNwxYGfH9RTKA3H0nR0D9LAGzN3KtEsbiiaWkUjDor6OT5Oz7pxCK+NaY2hu2FLoYEOa8oCkA==",
+      "path": "ulid/1.4.1",
+      "hashPath": "ulid.1.4.1.nupkg.sha512"
     },
     "ZstdSharp.Port/0.7.3": {
       "type": "package",

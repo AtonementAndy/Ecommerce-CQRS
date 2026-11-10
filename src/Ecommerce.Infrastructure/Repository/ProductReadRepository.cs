@@ -17,11 +17,10 @@ namespace Ecommerce.Infrastructure.Repository
             _mongoCollection = mongoDatabase.GetCollection<ProductReadModel>(collectionName);
         }
 
-        public async Task<Product?> GetByIdAsync(Guid id, CancellationToken cancellationToken)
+        public async Task<Product?> GetByIdAsync(Ulid id, CancellationToken cancellationToken)
         {
             var filter = Builders<ProductReadModel>.Filter.And(
-                Builders<ProductReadModel>.Filter.Eq(p => p.Id, id),
-                Builders<ProductReadModel>.Filter.Eq(p => p.IsDeleted, false)
+                Builders<ProductReadModel>.Filter.Eq(p => p.Id, id)
             );
                             
             var doc = await _mongoCollection.Find(filter).FirstOrDefaultAsync(cancellationToken);

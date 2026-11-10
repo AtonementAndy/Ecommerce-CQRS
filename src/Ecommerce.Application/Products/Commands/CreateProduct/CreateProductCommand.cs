@@ -7,5 +7,5 @@ namespace Ecommerce.Application.Commands.Products.CreateProduct
         string Description,
         decimal Price,
         int Stock
-    ) : IRequest<Guid>;
+    ) : IRequest<Ulid>;
 }

@@ -3,7 +3,7 @@
 namespace Ecommerce.Application.Common.Events
 {
     public record ProductEvent(
-        Guid Id,
+        Ulid Id,
         [Required] string Name,
         [Required] string Description,
         [Required] decimal Price,

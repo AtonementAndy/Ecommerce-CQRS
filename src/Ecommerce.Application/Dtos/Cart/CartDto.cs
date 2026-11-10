@@ -1,8 +1,8 @@
 namespace Ecommerce.Application.Dtos.Cart
 {
     public sealed record CartDto(
-        Guid Id,
-        Guid UserId,
+        Ulid Id,
+        Ulid UserId,
         IReadOnlyList<CartItemDto> Items,
         decimal Total,
         DateTime CreatedAt,

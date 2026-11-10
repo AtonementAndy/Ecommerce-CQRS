@@ -5,8 +5,8 @@ namespace Ecommerce.Domain.Entities
 {
     public class Cart
     {
-        public Guid Id { get; private set; }
-        public Guid UserId { get;  private set; }
+        public Ulid Id { get; private set; }
+        public Ulid UserId { get;  private set; }
         public DateTime CreatedAt { get; private set; }
         public DateTime UpdatedAt { get; private set; }
         private readonly List<CartItem> _items = [];
@@ -14,20 +14,20 @@ namespace Ecommerce.Domain.Entities
 
         private Cart() { }
 
-        public Cart(Guid userId)
+        public Cart(Ulid userId)
         {
-            if (userId == Guid.Empty)
+            if (userId == Ulid.Empty)
                 throw new DomainException("UserId is required.");
 
-            Id = Guid.CreateVersion7();
+            Id = Ulid.NewUlid();
             UserId = userId;
             CreatedAt = DateTime.UtcNow;
             UpdatedAt = DateTime.UtcNow;
         }
 
-        public void AddItem(Guid productId, string productName, Money unitPrice, Quantity quantity)
+        public void AddItem(Ulid productId, string productName, Money unitPrice, Quantity quantity)
         {
-            if (productId == Guid.Empty)
+            if (productId == Ulid.Empty)
                 throw new DomainException("ProductId is required.");
 
             if (string.IsNullOrWhiteSpace(productName))
@@ -43,7 +43,7 @@ namespace Ecommerce.Domain.Entities
             Touch();
         }
 
-        public void RemoveItem(Guid productId)
+        public void RemoveItem(Ulid productId)
         {
             var item = _items.FirstOrDefault(i => i.ProductId == productId)
                 ?? throw new DomainException("Item not found in cart.");

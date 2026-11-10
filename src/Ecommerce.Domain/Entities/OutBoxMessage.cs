@@ -4,7 +4,7 @@ namespace Ecommerce.Domain.Entities
 {
     public class OutboxMessage
     {
-        public Guid Id { get; private set; }
+        public Ulid Id { get; private set; }
         public string AggregateType { get; private set; } = string.Empty;
         public string EventType { get; private set; } = string.Empty;
         public string Payload { get; private set; } = string.Empty;
@@ -23,7 +23,7 @@ namespace Ecommerce.Domain.Entities
         {
             return new OutboxMessage
             {
-                Id = Guid.CreateVersion7(),
+                Id = Ulid.NewUlid(),
                 AggregateType = aggregateType,
                 EventType = eventType,
                 Payload = payload,

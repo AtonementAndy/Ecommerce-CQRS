@@ -3,5 +3,5 @@ using MediatR;
 
 namespace Ecommerce.Application.Products.Queries.GetProductById
 {
-    public record GetProductByIdQuery(Guid Id) : IRequest<ProductResponse?>;
+    public record GetProductByIdQuery(Ulid Id) : IRequest<ProductResponse?>;
 }

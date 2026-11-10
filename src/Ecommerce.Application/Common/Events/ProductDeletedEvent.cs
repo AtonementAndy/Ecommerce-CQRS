@@ -1,5 +1,5 @@
 ﻿
 namespace Ecommerce.Application.Common.Events
 {
-    public record ProductDeletedEvent(Guid Id, int Version);
+    public record ProductDeletedEvent(Ulid Id, int Version);
 }
